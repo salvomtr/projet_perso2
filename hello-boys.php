@@ -1,13 +1,13 @@
 <?php
 
-$pageTile = 'Salut les garçons !';
+$pageTitle = 'Salut les garçons !';
 
 ?>
 
 <?php include './header.php'; ?>
 
 <main>
-    <h1><?= $pageTile ?></h1>
+    <h1><?= $pageTitle ?></h1>
 </main>
 
 <?php include './footer.php'; ?>

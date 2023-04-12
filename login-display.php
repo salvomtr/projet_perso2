@@ -1,13 +1,13 @@
 <?php
 
-$pageTile = 'Login';
+$pageTitle = 'Login';
 
 ?>
 
 <?php include './header.php'; ?>
 
 <main>
-    <h1><?= $pageTile ?></h1>
+    <h1><?= $pageTitle ?></h1>
 
     <form id="form-login" method="post" action="./login.php">
 
