@@ -1,22 +1,28 @@
 <?php
 
-// Teste si l'Utilisateur est enregistré, de façon très simple
-$listRegistredUser = ['john', 'sarah'];
+session_start();
 
+// Teste si l'Utilisateur est enregistré, de façon très simple,
+// parmi des utilisateurs écrits 'en dur'
+$isRegistred = false;
+$listRegistredUser = ['john', 'sarah'];
 $candidateUser = $_POST['username'];
 $keyForCandidateUser = array_search($candidateUser, $listRegistredUser);
-
-$isRegistred = false;
 if ($keyForCandidateUser !== false) {
     $isRegistred = true;
 }
 
+// Quand l'Utilisateur est enregistré,
+// enregistre son 'username' en session et le redireige vers la page d'accueil
 if ($isRegistred) {
 
-    session_start();
     $_SESSION['username'] = $candidateUser;
-    header('Location: /');
 
-} else {
-    header('Location: /login-display.php');
+    header('Location: /');
+    exit;
 }
+
+// Par défaut,
+// redirige l'Utilisateur vers la page de 'login' avec un message d'information
+$_SESSION['msg_info'] = 'Nom d\'utilisateur inconnu.';
+header('Location: /login-display.php');
