@@ -23,7 +23,7 @@ if ($_COOKIE['prefer-inverted-theme']) {
 
     <h1>Login</h1>
 
-    <form id="form-login">
+    <form id="form-login" method="post" action="./login.php">
 
         <div>
             <label for="username">Username</label>
