@@ -9,6 +9,7 @@
                     <button type="submit">Invert theme</button>
                 </form>
             </li>
+            <li><a href="./login-display.php">Login</a></li>
         </ul>
     </nav>
 </header>
