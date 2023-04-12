@@ -1,0 +1,31 @@
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+
+    background-color: tomato;
+}
+
+a,
+a:visited {
+    color: white;
+}
+
+nav>ul {
+    display: flex;
+}
+
+nav>ul>li {
+    padding: 10px;
+    list-style: none;
+    font-size: 1.5em;
+}
+
+h1 {
+    font-size: 10em;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
