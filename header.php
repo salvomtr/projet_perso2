@@ -11,7 +11,12 @@
                     <button type="submit">Invert theme</button>
                 </form>
             </li>
-            <li><a href="./login-display.php">Login</a></li>
-        </ul>
+            <?php if ($_SESSION['username']) { ?>
+                <li>Hello "<?= $_SESSION['username'] ?>"</li>
+                <li><a href="logout.php">Logout</a></li>
+            <?php } else { ?>
+                <li><a href="./login-display.php">Login</a></li>
+            <?php } ?>
+       </ul>
     </nav>
 </header>
