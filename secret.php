@@ -20,7 +20,12 @@ if ($_COOKIE['prefer-inverted-theme']) {
 
 <body>
     <?php include './header.php' ?>
-    <h1>Secret !...</h1>
+
+    <?php if (isset($_SESSION['username'])) { ?>
+        <h1>No secret :)</h1>
+    <?php } else { ?>
+        <h1>Secret !...</h1>
+    <?php } ?>
 </body>
 
 </html>
