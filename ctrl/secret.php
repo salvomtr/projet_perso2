@@ -4,9 +4,9 @@
 
 $pageTitle = 'Secret !...';
 if (isset($_SESSION['username'])) {
-    $pageTitle = 'No secret :)';
+    $pageTitle = 'No more secret :)';
 }
 
 ?>
 
-<?php include './view/secret.php' ?>
+<?php include '../view/secret.php' ?>

@@ -1,4 +1,4 @@
-<?php include './view/partial/header.php'; ?>
+<?php include '../view/partial/header.php' ?>
 
 <main>
     <h1><?= $pageTitle ?></h1>
@@ -13,4 +13,4 @@
     </form>
 </main>
 
-<?php include './view/partial/footer.php'; ?>
+<?php include '../view/partial/footer.php' ?>
