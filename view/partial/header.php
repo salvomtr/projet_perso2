@@ -1,6 +1,6 @@
-
-
 <?php
+
+session_start();
 
 $theme = 'style';
 if ($_COOKIE['prefer-inverted-theme']) {
@@ -25,8 +25,8 @@ if ($_COOKIE['prefer-inverted-theme']) {
     <header>
         <nav>
             <ul>
-                <li><a href="/ctrl/hello-girls.php">Hello Girls !</a></li>
-                <li><a href="/ctrl/hello-boys.php">Hello Boys !</a></li>
+                <li><a href="/ctrl/hello-girl.php">Hello Girls !</a></li>
+                <li><a href="/ctrl/hello-boy.php">Hello Boys !</a></li>
                 <li><a href="/ctrl//secret.php">Secret !?..</a></li>
                 <li>
                     <form action="/ctrl/invert-theme.php">

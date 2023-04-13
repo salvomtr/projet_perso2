@@ -4,4 +4,4 @@ $pageTitle = 'Hello Boys !';
 
 ?>
 
-<?php include '../view/hello-boys.php' ?>
+<?php include '../view/hello-boy.php' ?>
