@@ -1,13 +1,7 @@
 <?php
 
-$pageTitle = 'Salut les garçons !';
+$pageTitle = 'Hello Boys !';
 
 ?>
 
-<?php include './header.php'; ?>
-
-<main>
-    <h1><?= $pageTitle ?></h1>
-</main>
-
-<?php include './footer.php'; ?>
+<?php include './view/hello-boys.php' ?>

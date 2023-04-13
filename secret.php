@@ -1,4 +1,4 @@
-<?php include './header.php'; ?>
+<?php session_start(); ?>
 
 <?php
 
@@ -9,8 +9,4 @@ if (isset($_SESSION['username'])) {
 
 ?>
 
-<main>
-    <h1><?= $pageTitle ?></h1>
-</main>
-
-<?php include './footer.php'; ?>
+<?php include './view/secret.php' ?>
