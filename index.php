@@ -1,1 +1,4 @@
-<?php header('Location: /ctrl/hello-girl.php');
+<?php
+
+$target = '/ctrl/hello-girl.php';
+header("Location: $target");
