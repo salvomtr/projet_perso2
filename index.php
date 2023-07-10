@@ -1,4 +1,4 @@
 <?php
 
-$target = '/ctrl/hello-girl.php';
+$target = '/ctrl/accueil.php';
 header("Location: $target");
