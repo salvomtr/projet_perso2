@@ -6,10 +6,10 @@ echo 'hello';
 // et configure la connexion pour afficher toutes les erreurs (s'il s'en produit)
 function getPDO()
 {
-    $host = 'localhost';
+    $host = '127.0.0.1';
     $port = 3306;
     $dbname = 'projet_perso';
-    $user = '';
+    $user = 'root';
     $password = '';
     $dataSourceName = "mysql:host=$host;port=$port;dbname=$dbname";
     $pdo = new PDO($dataSourceName, $user, $password);
@@ -23,20 +23,20 @@ function logMsg($msg)
     echo $msg . PHP_EOL;
 }
 
-
+class LibArticle{
 // Bibliothèque de fonctions dédiées aux Articles
 
-function create($idUser, $title, $description, $text, $picture)
+static function create($idUser, $title, $description, $text, $picture)
 {
-    $query = 'INSERT INTO article (idUser, title, description, text, picture) VALUES';
-    $query .= ' (:idUser, :title, :description, :text, :picture)';
+    $query = 'INSERT INTO article (id, titre, descriptionCourte, textArticle, immage, idUtilisateur) VALUES';
+    $query .= ' (:idUtilisateur, :titre, :descriptionCourte, :textArticle, :immage)';
 
     $stmt = getPDO()->prepare($query);
-    $stmt->bindParam(':idUser', $idUser);
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':description', $description);
-    $stmt->bindParam(':text', $text);
-    $stmt->bindParam(':picture', $picture);
+    $stmt->bindParam(':idUtilisateur', $idUser);
+    $stmt->bindParam(':titre', $title);
+    $stmt->bindParam(':descriptionCourte', $description);
+    $stmt->bindParam(':textArticle', $text);
+    $stmt->bindParam(':immage', $picture);
     logMsg($stmt->debugDumpParams());
 
     // Exécute la requête
@@ -46,7 +46,9 @@ function create($idUser, $title, $description, $text, $picture)
     return $successOrFailure;
 }
 
-function read($id)
+
+// selection l article dont l id est passe'
+static function read($id)
 {
    // Prépare la requête
    $query = 'SELECT ART.id, ART.idUser, ART.title, ART.description, ART.text, ART.picture, ART.timestamp';
@@ -58,29 +60,29 @@ function read($id)
 
    // Exécute la requête
    $successOrFailure = $stmt->execute();
-   logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+  // logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
 
    $result = $stmt->fetch(PDO::FETCH_ASSOC);
    return $result;
 }
 
-function readAll()
+ static function readAll()
 {
     // Prépare la requête
-    $query = 'SELECT ART.id, ART.idUser, ART.title, ART.description, ART.text, ART.picture, ART.timestamp';
+    $query = 'SELECT ART.id, ART.id_utilisateur, ART.titre, ART.description_courte, ART.text_article, ART.picture';
     $query .= ' FROM article ART';
-    $query .= ' ORDER BY ART.timestamp DESC';
+    $query .= ' ORDER BY ART.titre ASC';
     $stmt = getPDO()->prepare($query);
-    logMsg($stmt->debugDumpParams());
+   // logMsg($stmt->debugDumpParams());
 
     // Exécute la requête
     $successOrFailure = $stmt->execute();
-    logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+  //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
 
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
 }
-
+}
 
 function update($id, $title, $description, $text, $picture)
 {
@@ -91,3 +93,5 @@ function delete($id)
 {
     // ...
 }
+
+

@@ -3,7 +3,7 @@
 <?php
 
 $pageTitle = 'Secret !...';
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['nom'])) {
     $pageTitle = 'No more secret :)';
 }
 ?>

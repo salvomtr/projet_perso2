@@ -1,88 +1,92 @@
 <?php
-  
-//==============================================================================
-/**
-* Output a debug message as a string
-*
-* Save a debug message using print_r.
-*
-* @param mixed $item value to be printed
-* @param boolean $html convert result to an HTML string
-*/
-//==============================================================================
 
-function gs_strprint ($item, $html = true) {
-    ob_start ();
-    print_r ($item);
-    $p = ob_get_contents ();
-    ob_end_clean ();
-  
-    return ($html ? htmlentities ($p) : $p);
-  }
-  
-  //==============================================================================
-  /**
-  * Output a debug message
-  *
-  * Print a debug message using print_r, with PRE HTML encoding (or not).
-  *
-  * @param mixed $item value to be printed
-  * @param boolean $html convert result to an HTML string
-  */
-  //==============================================================================
-  
-  function gs_print ($item, $html = true) {
-    echo
-      ($html
-      ? '<pre>'.gs_strprint ($item, true).'</pre>'
-      : gs_strprint ($item, false));
-  }
-  
-  //==============================================================================
-  /**
-  * Fonction pour se connecter a lq bqse de donnees, retourne le lien mySQL 
-  */
-  //==============================================================================
-  
-  function My_mysql_connect () {
-
-    //-- on se connecte 
+// Ouvre une connexion à la Base de données,
+// et configure la connexion pour afficher toutes les erreurs (s'il s'en produit)
+function getPDO()
+{
     $host = '127.0.0.1';
-    $login = 'root';
+    $port = 3306;
+    $dbname = 'projet_perso';
+    $user = 'root';
     $password = '';
-    $bdd = 'projet_perso';
+    $dataSourceName = "mysql:host=$host;port=$port;dbname=$dbname";
+    $pdo = new PDO($dataSourceName, $user, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $BddLinkAdmin = mysqli_connect($host,$login,$password,$bdd);
-    return $BddLinkAdmin;
+    return $pdo;
+}
 
-  }  
+function logMsg($msg)
+{
+    echo $msg . PHP_EOL;
+}
+
+class LibUser
+{
+    // Bibliothèque de fonctions dédiées aux Utilisateurs
+    static function create($nom, $prenom, $mail, $motDePasse, $idRole)
+    {
+        $query = 'INSERT INTO utilisateur (nom, prenom, mail, motDePasse, idRole) VALUES';
+        $query .= ' (:nom, :prenom, :mail, :motDePasse, :idRole)';
+
+        $stmt = getPDO()->prepare($query);
+        // $stmt->bindParam(':id', $idUser);
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':mail', $mail);
+        $stmt->bindParam(':motDePasse', $motDePasse);
+        $stmt->bindParam(':idRole', $idRole);
+        logMsg($stmt->debugDumpParams());
+
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        return $successOrFailure;
+    }
+    // Sélectionne tous les Utilisateurs et les ordonnées par nom
+    static function readAll()
+    {
+        // Prépare la requête
+        $query = 'SELECT USR.id, USR.mail, USR.motDePasse, USR.idRole';
+        $query .= ' FROM utilisateur AS USR';
+        $query .= ' ORDER BY USR.mail ASC';
+        $stmt = getPDO()->prepare($query);
+        logMsg($stmt->debugDumpParams());
+
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    // cherche un utilisateurd apres son email et sa password. 
+    // retourn null si il ne existe pas
+    static function find($mail, $motDePasse)
+    {
+        // Prépare la requête
+        $query = 'SELECT U.id, U.nom, U.prenom, U.mail, U.motDePasse, U.idRole';
+        $query .= ' FROM utilisateur AS U';
+        $query .= ' WHERE U.mail = :mail';
+        $query .= ' AND U.motDePasse = :motDePasse';
+        $stmt = getPDO()->prepare($query);
+        $stmt->bindParam(':mail', $mail);
+        $stmt->bindParam(':motDePasse', $motDePasse);
+        logMsg($stmt->debugDumpParams());
+
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        // logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($result == false) {
+            return null;
+        }
+        return $result;
+    }
 
 
-  //==============================================================================
-  /**
-  * Fonction pour faire le login 
-  */
-  //==============================================================================
-  
-  function My_login_user ($mail, $password) {
-    $BddLinkAdmin = My_mysql_connect ();
-
-    //-- On pose une question
-    $laRequette = "select * from utilisateur where mail='".$mail."' and motDePasse='".$password."' ";
-    //gs_print ($laRequette);
-    $monResult =  mysqli_query ($BddLinkAdmin, $laRequette);
-  
-    //-- on affiche chaque elements de la réponse 
-    $row = mysqli_fetch_array ($monResult);
-      
-    //-- on libere la memoire
-    mysqli_free_result($monResult);
     
-    //-- on ferme la connection mySQL
-    mysqli_close($BddLinkAdmin);    
-
-    return $row;
-  }
-
-
-?> 	
+}

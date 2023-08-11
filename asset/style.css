@@ -1,0 +1,143 @@
+* {
+    /* Responsive, Inclus la bordure et le padding dans la taille de la boîte */
+    /* box-sizing: border-box; */
+    /* Provisoire */
+    /* border: 1px dashed white; */
+    /* background-color: rgba(0, 0, 0, 0.1); */
+}
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    background-color:white;
+    margin: 0;
+    font-size: large;
+}
+
+
+
+header{
+    background-color: rgb(78, 187, 78);
+    
+}
+
+.menu_element{
+   
+    justify-content: center;
+}
+
+.button_menu{
+    margin:80px;
+    text-decoration: double;
+    color: white;
+    
+}
+
+
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+
+h1, h2, h3,h4,h5,h6{
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+   
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+/* SIZING */
+.mw-1200 {
+    max-width: 1200px;
+}
+
+.mw-600 {
+    max-width: 600px;
+}
+/* SPACING */
+.m-auto {
+    margin: auto;
+}
+.p-1 {
+    padding: 16px; /*1em = 1rem = 16px*/
+    justify-content: space-around;
+   
+    
+}
+
+/* FLEX Parent - container */
+.d-flex {
+    display: flex;
+    justify-items: center;
+}
+.wrap {
+    flex-wrap: wrap;
+}
+.jc-center {
+    justify-content: center;
+}
+.jc-sa {
+    justify-content: space-around;
+}
+.align-center{
+    align-items: center;
+    justify-items: space-between;
+}
+/* FLEX Enfant - item */
+
+.f-1-300  {
+    flex-grow: 5;
+    flex-shrink: 5;
+    /* remplace width */
+    flex-basis: 300px;
+    justify-content: space-around;
+}
+
+.container{
+    gap: 50px;
+}
+
+.art {
+   
+    /* Provisoire */
+    box-sizing:content-box;
+    border: 1px solid rgb(01, 01, 01, 0.1) ;
+    justify-content: space-around;
+    border-radius: 10px;
+    box-shadow: 3px 3px 15px  rgb(01, 01, 02, 0.3);
+}
+
+
+
+.art__header {
+    padding: 16px;
+    border-radius: 5px;
+    background-color: white;
+    
+    
+}
+
+.art__summary{
+    
+}
+
+.art__footer{
+
+}
+
+
+/* UTILITIES */
+/* COMPONENTS */
+/* TYPO */

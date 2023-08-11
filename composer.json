@@ -1,0 +1,23 @@
+{
+    "name": "simplon/b540",
+    "description": "Brief 540 - Quizz",
+    "type": "project",
+    "authors": [
+        {
+            "name": "GRA",
+            "email": "grsimplon@longtime.fr"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.3",
+        "twbs/bootstrap": "^5.3"
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "rm -rf asset/css/bootstrap/",
+            "rm -rf asset/js/bootstrap/",
+            "cp -R vendor/twbs/bootstrap/dist/css/bootstrap.min.css asset/css/bootstrap.min.css",
+            "cp -R vendor/twbs/bootstrap/dist/js/bootstrap.min.js asset/js/bootstrap.min.js"
+        ]
+    }
+}

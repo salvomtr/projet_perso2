@@ -14,7 +14,7 @@ $theme = 'style';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/asset/css/style.css">
+    <link rel="stylesheet" href="/asset/style.css">
     <title><?= $pageTitle ?></title>
 </head>
 
@@ -22,16 +22,16 @@ $theme = 'style';
 
     <header class="p-1 d-flex align-center">
         <nav>
-            <ul>
-                <a href="/ctrl/accueil.php">Accueil</a>
-                <a href="/ctrl/article.php">Recettes</a>
-                <a href="/ctrl//secret.php">Secret !?..</a>
+            <ul class="menu_element">
+                <a class="button_menu" href="/ctrl/accueil.php">Accueil</a>
+                <a class="button_menu"   href="/ctrl/article.php">Recettes</a>
+                <a class="button_menu"  href="/ctrl//secret.php">Secret !?..</a>
                
-                <?php if ($_SESSION['username']) { ?>
-                    Hello "<?= $_SESSION['username'] ?>"</li>
+                <?php if ($_SESSION['nom']) { ?>
+                    Hello "<?= $_SESSION['nom'] ?>"</li>
                     <a href="/ctrl/logout.php">Logout</a></li>
                 <?php } else { ?>
-                    <a href="/ctrl/login-display.php">Login</a></li>
+                    <a class="button_menu" href="/ctrl/login-display.php">Login</a></li>
                 <?php } ?>
             </ul>
         </nav>

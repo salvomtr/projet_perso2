@@ -1,30 +1,39 @@
 <?php
 
-require_once('../lib/user.php');
+require('../lib/user.php');
 
 session_start();
 
-//lit les infos saisies dans le formulaire avec $_POST
+// Teste si l'Utilisateur est enregistré, de façon très simple,
+// parmi des utilisateurs écrits 'en dur'
+$isRegistred = false;
+//$listRegistredUser = ['john', 'sarah'];
+//$candidateUser = $_POST['username'];
+//$keyForCandidateUser = array_search($candidateUser, $listRegistredUser);
+
+//lit les infos saisie dans le formulaire avec $_POST
 $mail = $_POST['mail'];
-$password = $_POST['password'];
+$motDePasse = $_POST['password'];
 
-//cherche un utilisateur qui possède ce nom et ce mot de passe
-//$utilisateur = LibUser::find($mail, $password);
-$utilisateur = My_login_user ($mail, $password);
-
+//cherche un utilisateur que possede cette mail et ce password
+$utilisateur = LibUser::find($mail, $motDePasse);
+var_dump($utilisateur);
 if ($utilisateur !== null) {
-    // L'utilisateur a été trouvé, enregistre les informations en session
-    $_SESSION['email'] = $utilisateur['mail'];
-    $_SESSION['password'] = $utilisateur['motDePasse'];
-//gs_print ($utilisateur);
-    header('Location: ../ctrl/article.php');
-    exit;
-} else {
-    // L'utilisateur n'a pas été trouvé, redirige vers la page de connexion avec un message d'erreur
-    $_SESSION['msg_error'] = 'Nom d\'utilisateur ou mot de passe incorrect.';
-//gs_print ('prout');
-    header('Location: /ctrl/login-display.php');
+    $isRegistred = true;
+}
+
+// Quand l'Utilisateur est enregistré,
+// enregistre son 'username' en session et le redireige vers la page d'accueil
+if ($isRegistred) {
+
+    $_SESSION['nom'] = $utilisateur['nom'];
+    $_SESSION['motDePasse'] = $utilisateur['motDePasse'];
+
+    header('Location: /');
     exit;
 }
 
-?>
+// Par défaut,
+// redirige l'Utilisateur vers la page de 'login' avec un message d'information
+$_SESSION['msg_info'] = 'Nom d\'utilisateur inconnu.';
+header('Location: /ctrl/login-display.php');

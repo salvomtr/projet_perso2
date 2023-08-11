@@ -43,6 +43,15 @@ CREATE TABLE role (
 
 
 
+-- CREATION TABLE CATEGORIE
+CREATE TABLE categorie (
+    id bigint(25) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nomCategorie varchar(50) NOT NULL
+   
+);
+
+
+
 ALTER TABLE article ADD CONSTRAINT `fk_article_utilisateur` FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(id);
 ALTER TABLE commentaire ADD CONSTRAINT `fk_commentaire_article` FOREIGN KEY (idArticle) REFERENCES article(id);
 ALTER TABLE commentaire ADD CONSTRAINT `fk_commentaire_utilisateur` FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(id);
