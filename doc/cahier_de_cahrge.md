@@ -4,7 +4,7 @@
 
 BESOIN DU CLIENT:
 
-Dans une cadre de reconversionne professionelle, un ancienne cuisinier veut-il developper son propre site internet dont il peut partager ses propres recettes, avec des autres utilisateurs que pouvent aussi partageres les propres.
+Dans une cadre de reconversionne professionelle, un ancienne cuisinier veut-il developper son propre site internet dont il pourra partager ses propres recettes, avec des autres utilisateurs que pouvent aussi partageres les propres.
 Un utilisateur peut-il ecrire des articles et egalment commantaire des articles deja existantes.
 Le(s) gestionnaire(s) peut-il aussi creer des articles, commantaire, moderer les commantaires et les articles.
 
@@ -25,8 +25,8 @@ Les article seront composee par une image une description courte et par du texte
 MISE EN OUVRE DE LA SOLUTION (CAHIERS DE CHARGE):
 
 - Arborescense du site web 
-- Maquettage zonning des pages pour identifer les composants graphiques
-- Une identite visuelle, une charte graphique (logo/ palette de couleur / typographie)
+- Maquettage zonning des pages pour identifier les composants graphiques
+- Creation de une identite visuelle, une charte graphique (logo/ palette de couleur / typographie)
 - Maquette dynamique pour simuler la navigation dans le site 
 - Creation dictionnaire donnees
 - Creation mcd/mld/mpd
