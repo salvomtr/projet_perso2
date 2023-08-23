@@ -1,6 +1,6 @@
 =============================================DOSSIER PROJET==============================================================
 
-
+reformuler 1-2 partie sans partie technoique
 
 BESOIN DU CLIENT:
 
@@ -11,7 +11,7 @@ Le(s) gestionnaire(s) peut-il aussi creer des articles, commantaire, moderer les
 
 
 
-PROPOSITION DE SOLUTION:
+PROPOSITION DE SOLUTION E FUNCTIONNALITES:
 
 La proposition qu on souhaite entreprendre c est un blog, avec inscription/login-logout/creation article/commentaire les article. 
 Il y aura un ou plusiers gestionnaire.
@@ -22,7 +22,7 @@ Les article seront composee par une image une description courte et par du texte
 
 
 
-MISE EN OUVRE DE LA SOLUTION (CAHIERS DE CHARGE):
+MISE EN OUVRE DE LA SOLUTION :
 
 - Arborescense du site web 
 - Maquettage zonning des pages pour identifier les composants graphiques
