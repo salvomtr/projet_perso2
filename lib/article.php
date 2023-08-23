@@ -1,6 +1,6 @@
 <?php
 
-echo 'hello';
+//echo 'hello';
 
 // Ouvre une connexion à la Base de données,
 // et configure la connexion pour afficher toutes les erreurs (s'il s'en produit)
@@ -28,15 +28,15 @@ class LibArticle{
 
 static function create($idUser, $title, $description, $text, $picture)
 {
-    $query = 'INSERT INTO article (id, titre, descriptionCourte, textArticle, immage, idUtilisateur) VALUES';
-    $query .= ' (:idUtilisateur, :titre, :descriptionCourte, :textArticle, :immage)';
+    $query = 'INSERT INTO article (id_utilisateur, titre, description_courte, text_article, picture) VALUES';
+    $query .= ' (:idUser, :title, :description, :text, :picture)';
 
     $stmt = getPDO()->prepare($query);
-    $stmt->bindParam(':idUtilisateur', $idUser);
-    $stmt->bindParam(':titre', $title);
-    $stmt->bindParam(':descriptionCourte', $description);
-    $stmt->bindParam(':textArticle', $text);
-    $stmt->bindParam(':immage', $picture);
+    $stmt->bindParam(':idUser', $idUser);
+    $stmt->bindParam(':title', $title);
+    $stmt->bindParam(':description', $description);
+    $stmt->bindParam(':text', $text);
+    $stmt->bindParam(':picture', $picture);
     logMsg($stmt->debugDumpParams());
 
     // Exécute la requête
@@ -69,7 +69,7 @@ static function read($id)
  static function readAll()
 {
     // Prépare la requête
-    $query = 'SELECT ART.id, ART.id_utilisateur, ART.titre, ART.description_courte, ART.text_article, ART.picture';
+    $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage';
     $query .= ' FROM article ART';
     $query .= ' ORDER BY ART.titre ASC';
     $stmt = getPDO()->prepare($query);
