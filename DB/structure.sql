@@ -15,6 +15,7 @@ CREATE TABLE article (
     immage VARBINARY(50) NOT NULL,
     idUtilisateur bigint(20) NOT NULL,
     idCategorie bigint(20) NOT NULL,
+    difficulte int(2) NOT NULL,
     dateHeure timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

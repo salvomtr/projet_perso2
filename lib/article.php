@@ -51,16 +51,16 @@ static function create($idUser, $title, $description, $text, $picture)
 static function read($id)
 {
    // Prépare la requête
-   $query = 'SELECT ART.id, ART.idUser, ART.title, ART.description, ART.text, ART.picture, ART.timestamp';
+   $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.dateHeure';
    $query .= ' FROM article ART';
    $query .= ' WHERE ART.id = :id';
    $stmt = getPDO()->prepare($query);
    $stmt->bindParam(':id', $id);
-   logMsg($stmt->debugDumpParams());
+//    logMsg($stmt->debugDumpParams());
 
    // Exécute la requête
    $successOrFailure = $stmt->execute();
-  // logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+//   logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
 
    $result = $stmt->fetch(PDO::FETCH_ASSOC);
    return $result;
@@ -69,7 +69,7 @@ static function read($id)
  static function readAll()
 {
     // Prépare la requête
-    $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage';
+    $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure';
     $query .= ' FROM article ART';
     $query .= ' ORDER BY ART.titre ASC';
     $stmt = getPDO()->prepare($query);

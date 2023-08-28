@@ -1,146 +1,52 @@
 <?php include '../view/partial/header.php' ?>
 
 
-    <main class="p-1">
-        <h1><?= $pageTitle ?></h1>
+<main class="p-1">
+    <h1>
+        <?= $pageTitle ?>
+    </h1>
 
-        <div class="container d-flex wrap jc-center mw-1200 m-auto">
-            <!-- liste des posts / recettes -->
-           
+    <div class="container d-flex wrap jc-center mw-1200 m-auto">
+        <!-- liste des posts / recettes -->
+        <?php foreach ($articles as $article) { ?>
             <!--art1-->
             <article class="art p-1 mw-350 f-1-300">
-              
+
                 <header class="art__header">
                     <picture>
-                        <img src="https://source.unsplash.com/1600x900?meal" alt="Lorem" width="600">
+                        <img src="https://source.unsplash.com/1600x900?meal&<?= $article['titre'] ?>" alt="Lorem"
+                            width="600">
                     </picture>
-                    <h2>Recette 1</h2>
-                    <p><small>Difficulté : ⭐⭐⭐</small></p>
+                    <h2>
+                        <?= $article['titre'] ?>
+                    </h2>
+                    <p>
+                        <small>Difficulté : 
+                            
+                            <?php for ($i = 1; $i <= $article['difficulte']; $i++) { ?>
+                                ⭐
+                            <?php } ?>
+
+                        </small>
+                    </p>
                 </header>
 
                 <div class="art__summary">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, veritatis quidem autem doloremque architecto adipisci voluptas reiciendis rem, est quo quod, quam saepe exercitationem harum assumenda hic. Sequi, nisi dignissimos?</p>
+                    <p>
+                        <?= $article['textArticle'] ?>
+                    </p>
                 </div>
 
                 <footer class="art__footer">
-                    <a href="#">En savoir plus</a>
+                    <a href="/ctrl/article-single.php?id=<?= $article['id'] ?>">En savoir plus</a>
                 </footer>
 
             </article>
 
-            <!--art2-->
-            <article class="art p-1 mw-350 f-1-300">
-                <!-- Résumé -->
+        <?php } ?>
 
-                <header class="art__header">
-                    <picture>
-                        <img src="https://source.unsplash.com/1600x900?meal" alt="Lorem" width="600">
-                    </picture>
-                    <h2>Recette 1</h2>
-                    <p><small>Difficulté : ⭐⭐⭐</small></p>
-                </header>
+    </div>
 
-                <div class="art__summary">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, veritatis quidem autem doloremque architecto adipisci voluptas reiciendis rem, est quo quod, quam saepe exercitationem harum assumenda hic. Sequi, nisi dignissimos?</p>
-                </div>
-
-                <footer class="art__footer">
-                    <a href="#">En savoir plus</a>
-                </footer>
-
-            </article>
-
-             <!--art3-->
-            <article class="art p-1 mw-350 f-1-300">
-                
-
-                <header class="art__header">
-                    <picture>
-                        <img src="https://source.unsplash.com/1600x900?meal" alt="Lorem" width="600">
-                    </picture>
-                    <h2>Recette 1</h2>
-                    <p><small>Difficulté : ⭐⭐⭐</small></p>
-                </header>
-
-                <div class="art__summary">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, veritatis quidem autem doloremque architecto adipisci voluptas reiciendis rem, est quo quod, quam saepe exercitationem harum assumenda hic. Sequi, nisi dignissimos?</p>
-                </div>
-
-                <footer class="art__footer">
-                    <a href="#">En savoir plus</a>
-                </footer>
-
-            </article>
-
-             <!--art4-->
-            <article class="art p-1 mw-350 f-1-300">
-               
-
-                <header class="art__header">
-                    <picture>
-                        <img src="https://source.unsplash.com/1600x900?meal" alt="Lorem" width="600">
-                    </picture>
-                    <h2>Recette 1</h2>
-                    <p><small>Difficulté : ⭐⭐⭐</small></p>
-                </header>
-
-                <div class="art__summary">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, veritatis quidem autem doloremque architecto adipisci voluptas reiciendis rem, est quo quod, quam saepe exercitationem harum assumenda hic. Sequi, nisi dignissimos?</p>
-                </div>
-
-                <footer class="art__footer">
-                    <a href="#">En savoir plus</a>
-                </footer>
-
-            </article>
-
-             <!--art5-->
-            <article class="art p-1 mw-350 f-1-300">
-             
-
-                <header class="art__header">
-                    <picture>
-                        <img src="https://source.unsplash.com/1600x900?meal" alt="Lorem" width="600">
-                    </picture>
-                    <h2>Recette 1</h2>
-                    <p><small>Difficulté : ⭐⭐⭐</small></p>
-                </header>
-
-                <div class="art__summary">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, veritatis quidem autem doloremque architecto adipisci voluptas reiciendis rem, est quo quod, quam saepe exercitationem harum assumenda hic. Sequi, nisi dignissimos?</p>
-                </div>
-
-                <footer class="art__footer">
-                    <a href="#">En savoir plus</a>
-                </footer>
-
-            </article>
-
-             <!--art6-->
-             <article class="art p-1 mw-350 f-1-300">
-             
-
-             <header class="art__header">
-                 <picture>
-                     <img src="https://source.unsplash.com/1600x900?meal" alt="Lorem" width="600">
-                 </picture>
-                 <h2>Recette 1</h2>
-                 <p><small>Difficulté : ⭐⭐⭐</small></p>
-             </header>
-
-             <div class="art__summary">
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, veritatis quidem autem doloremque architecto adipisci voluptas reiciendis rem, est quo quod, quam saepe exercitationem harum assumenda hic. Sequi, nisi dignissimos?</p>
-             </div>
-
-             <footer class="art__footer">
-                 <a href="#">En savoir plus</a>
-             </footer>
-
-         </article>
-
-
-        </div>
-
-    </main>
+</main>
 
 <?php include '../view/partial/footer.php' ?>
