@@ -10,10 +10,10 @@ $articles = LibArticle::readAll();
 
 // Vous pouvez maintenant parcourir les articles et faire quelque chose avec les données
 foreach ($articles as $article) {
-    echo "ID : " . $article['id'] . "<br>";
+    // echo "ID : " . $article['id'] . "<br>";
     echo "Titre : " . $article['titre'] . "<br>";
     echo "Description : " . $article['descriptionCourte'] . "<br>";
-    // ... Autres colonnes ...
+    echo "Procediment : " . $article['textArticle'] . "<br>";
     echo "<br>";
 }
 

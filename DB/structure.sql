@@ -13,7 +13,9 @@ CREATE TABLE article (
     descriptionCourte varchar(300) NOT NULL,
     textArticle varchar(1000) NOT NULL,
     immage VARBINARY(50) NOT NULL,
-    idUtilisateur bigint(20) NOT NULL
+    idUtilisateur bigint(20) NOT NULL,
+    idCategorie bigint(20) NOT NULL,
+    dateHeure timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 -- CREATION TABLE COMMENTAIRE
@@ -29,7 +31,7 @@ CREATE TABLE utilisateur (
     id bigint(25) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nom varchar(50) NOT NULL,
     prenom varchar(50) NOT NULL,
-    e-mail varchar(50) NOT NULL,
+    mail varchar(50) NOT NULL,
     motDePasse varchar(50) NOT NULL,
     idRole bigint(20) NOT NULL
 );
@@ -53,9 +55,11 @@ CREATE TABLE categorie (
 
 
 ALTER TABLE article ADD CONSTRAINT `fk_article_utilisateur` FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(id);
+ALTER TABLE article ADD CONSTRAINT `fk_article_categorie` FOREIGN KEY (idCategorie) REFERENCES categorie(id);
 ALTER TABLE commentaire ADD CONSTRAINT `fk_commentaire_article` FOREIGN KEY (idArticle) REFERENCES article(id);
 ALTER TABLE commentaire ADD CONSTRAINT `fk_commentaire_utilisateur` FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(id);
 ALTER TABLE utilisateur ADD CONSTRAINT `fk_utlisateur_role` FOREIGN KEY (idRole) REFERENCES role(id);
+
 
 
 

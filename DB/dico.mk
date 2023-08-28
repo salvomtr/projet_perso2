@@ -5,9 +5,9 @@ DICTIONNAIRE
 ENTITE:
 
 
-    ARTICLE: titre, descriptionCourte, textArticle, picture
+    ARTICLE: titre, descriptionCourte, textArticle, image
 
-    COMMENTAIRE: texteCommantaire
+    COMMENTAIRE: texteCommentaire
 
     UTILISATEUR: nom, prenom, motDePasse, email
 
