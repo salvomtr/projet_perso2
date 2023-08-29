@@ -26,17 +26,19 @@ function logMsg($msg)
 class LibArticle{
 // Bibliothèque de fonctions dédiées aux Articles
 
-static function create($idUser, $title, $description, $text, $picture)
+static function create($idUser, $title, $description, $text, $picture, $idCategorie, $difficulte)
 {
-    $query = 'INSERT INTO article (id_utilisateur, titre, description_courte, text_article, picture) VALUES';
-    $query .= ' (:idUser, :title, :description, :text, :picture)';
+    $query = 'INSERT INTO article (idUtilisateur, titre, descriptionCourte, textArticle, immage, idCategorie, difficulte) VALUES';
+    $query .= ' (:idUtilisateur, :titre, :descriptionCourte, :textArticle, :immage, :idCategorie, :difficulte)';
 
     $stmt = getPDO()->prepare($query);
-    $stmt->bindParam(':idUser', $idUser);
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':description', $description);
-    $stmt->bindParam(':text', $text);
-    $stmt->bindParam(':picture', $picture);
+    $stmt->bindParam(':idUtilisateur', $idUser); 
+    $stmt->bindParam(':difficulte', $difficulte);
+    $stmt->bindParam(':idCategorie', $idCategorie);
+    $stmt->bindParam(':titre', $title);
+    $stmt->bindParam(':descriptionCourte', $description);
+    $stmt->bindParam(':textArticle', $text);
+    $stmt->bindParam(':immage', $picture);
     logMsg($stmt->debugDumpParams());
 
     // Exécute la requête
