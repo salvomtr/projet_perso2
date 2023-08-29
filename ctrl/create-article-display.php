@@ -1,6 +1,12 @@
+<?php require_once('../lib/article.php');  ?>
+
 <?php
 
 $pageTitle = 'Creer Article';
+
+
+//list les categories pour alimentatire la liste des choix dans le formulaire
+$listCategories = LibArticle::listCategorie();
 
 ?>
 

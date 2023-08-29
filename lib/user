@@ -86,3 +86,24 @@ function gs_strprint ($item, $html = true) {
 
 
 ?> 	
+
+
+
+
+
+static function listCategorie()
+    {
+        // Prépare la requête
+        $query = 'SELECT CAT.id, CAT.idUtilisateur, CAT.titre,  CAT.descriptionCourte, CAT.textArticle, CAT.immage, CAT.difficulte, CAT.dateHeure';
+        $query .= ' FROM categorie CAT';
+        $query .= ' ORDER BY CAT.titre ASC';
+        $stmt = getPDO()->prepare($query);
+        // logMsg($stmt->debugDumpParams());
+
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }

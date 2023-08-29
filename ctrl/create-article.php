@@ -1,14 +1,20 @@
-<?php $pageTitle = 'Create Article' ?>
+<?php require_once('../lib/article.php');
 
-<?php require_once('../lib/article.php'); ?>
+session_start(); ?>
+
+
+<?php $pageTitle = 'Create Article' ?> 
+
+
+
 <?php
-$idCategorie = 2;
-$idUser = 1; //$_POST['idUtilisateur'];
-$title = 'ciao'; //$_POST['titre'];
-$description = 'ciao ciao';//$_POST['descriptionCourte'];
-$text = 'mangiare e bello';// $_POST['textArticle'];
-$picture =// $_POST['immage'];
-$difficulte = 3;
+$idUser = $_SESSION['user']['id'];
+$title = $_POST['titre'];
+$description = $_POST['descriptionCourte'];
+$text = $_POST['textArticle'];
+$picture = $_POST['immage'];
+$idCategorie = $_POST['idCategorie'];
+$difficulte = $_POST['difficulte'];
 
 
 // Appel de la fonction create() pour creer des articles
@@ -16,4 +22,4 @@ $articles = LibArticle::create($idUser, $title, $description, $text, $picture, $
 
 
 header('Location: /ctrl/article.php');
-?> 
+?>

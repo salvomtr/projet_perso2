@@ -1,6 +1,6 @@
 <?php
 
 session_start();
-$_SESSION['nom'] = [];
+$_SESSION = [];
 
 header('Location: /');
