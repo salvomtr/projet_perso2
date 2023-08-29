@@ -11,7 +11,7 @@ CREATE TABLE article (
     id bigint(25) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     titre varchar(50) NOT NULL,
     descriptionCourte varchar(300) NOT NULL,
-    textArticle varchar(1000) NOT NULL,
+    textArticle text NOT NULL,
     immage VARBINARY(50) NOT NULL,
     idUtilisateur bigint(20) NOT NULL,
     idCategorie bigint(20) NOT NULL,
