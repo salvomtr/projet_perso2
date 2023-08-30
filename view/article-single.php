@@ -35,6 +35,12 @@
             </div>
 
         </article>
+
+        <div>
+            <a href="../ctrl/deletArticle.php?id=<?= $article['id'] ?>">delete</a>
+        </div>
+
+
 </main>
 
 

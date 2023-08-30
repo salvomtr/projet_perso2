@@ -9,7 +9,7 @@
     <div class="container d-flex wrap jc-center mw-1200 m-auto">
         <!-- liste des posts / recettes -->
         <?php foreach ($articles as $article) { ?>
-            <!--art1-->
+            
             <article class="art p-1 mw-350 f-1-300">
 
                 <header class="art__header">
