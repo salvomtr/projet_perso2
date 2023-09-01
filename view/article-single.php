@@ -12,10 +12,11 @@
 
             <header class="art__header">
                 <picture>
-                    <img src="https://source.unsplash.com/1600x900?meal&<?= $article['titre'] ?>" alt="Lorem" width="600">
+                    <img src="https://source.unsplash.com/1600x900?meal&<?= $article['titre'] ?>" alt="Lorem"
+                        width="600">
                 </picture>
                 <h2>
-                    <?= $article['titre'] ?>
+                    <?= $article['titre'];?>
                 </h2>
                 <p>
                     <small>Difficulté :
@@ -37,9 +38,21 @@
         </article>
 
         <div>
-            <a href="../ctrl/deletArticle.php?id=<?= $article['id'] ?>">delete</a>
+            <a href="../ctrl/deletArticle.php?id=<?= $article['id'] ?>">delete article</a>
         </div>
 
+
+
+        <div>
+            <form id="form-commentaire" method="post" action="/ctrl/commentaire.php">
+                <br>
+                <label for="commentaire">Commentaire: </label>
+                <input id="commentaire" type="text" placeholder="text" name="textCommentaire" autofocus>
+                <br>
+                <input type="hidden" name="idArticle" value="<?= $article['id'] ?>">
+                <button type="submit">creer</button>
+            </form>
+        </div>
 
 </main>
 

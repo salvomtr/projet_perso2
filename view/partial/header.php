@@ -25,7 +25,7 @@ $theme = 'style';
             <ul class="menu_element">
                 <a class="button_menu" href="/ctrl/accueil.php">Accueil</a>
                 <a class="button_menu"   href="/ctrl/article.php">Recettes</a>
-                <a class="button_menu"  href="/ctrl/secret.php">Secret !?..</a>
+                <a class="button_menu"  href="/ctrl/admin.php">Admin</a>
                 <a class="button_menu"  href="/ctrl/create-article-display.php">Create Article</a>
                
                 <?php if ($_SESSION['nom']) { ?>

@@ -54,7 +54,7 @@ class LibArticle
     static function read($id)
     {
         // Prépare la requête
-        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.dateHeure';
+        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.dateHeure, ART.difficulte';
         $query .= ' FROM article ART';
         $query .= ' WHERE ART.id = :id';
         $stmt = getPDO()->prepare($query);
@@ -122,6 +122,25 @@ class LibArticle
         // Exécute la requête
         $successOrFailure = $stmt->execute();
         logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        return $successOrFailure;
+    }
+
+
+    static function create_comment($text, $idArticle, $idUser)
+    {
+        $query = 'INSERT INTO commentaire (textCommentaire, idArticle, idUtilisateur) VALUES';
+        $query .= ' (:textCommentaire, :idArticle, :idUtilisateur)';
+
+        $pdo = getPDO(); // Assuming you have a function to get the PDO connection
+
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':textCommentaire', $text);
+        $stmt->bindParam(':idArticle', $idArticle);
+        $stmt->bindParam(':idUtilisateur', $idUser);
+
+        // Execute the query and handle any errors
+        $successOrFailure = $stmt->execute();
 
         return $successOrFailure;
     }

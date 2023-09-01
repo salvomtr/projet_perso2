@@ -18,8 +18,8 @@ body{
 
 
 header{
-    background-color: rgb(78, 187, 78);
-    
+    background-color: rgb(48, 188, 55);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .menu_element{
@@ -55,6 +55,22 @@ h1{
     justify-content: center;
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+.footer__main{
+    
+    background-color: rgb(48, 188, 55);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+button{
+    
+    background-color: green;
+    border-radius: 25px;
+    padding:16px;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
 }
 
 
@@ -116,7 +132,7 @@ h1{
     border: 1px solid rgb(01, 01, 01, 0.1) ;
     justify-content: space-around;
     border-radius: 10px;
-    box-shadow: 3px 3px 15px  rgb(01, 01, 02, 0.3);
+    box-shadow: 3px 3px 15px  rgb(01, 01, 02, 0.4);
 }
 
 

@@ -5,7 +5,7 @@ $_SESSION['msg_info'] = null;
 
 ?>
 
-    <footer class="p-1">Footer</footer>
+    <footer class="p-1 footer__main">Footer</footer>
 
 </body>
 </html>

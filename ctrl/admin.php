@@ -8,7 +8,7 @@ if (isset($_SESSION['nom'])) {
 }
 ?> 
 
-<?php include '../view/secret.php' ?><?php
+<?php include '../view/admin.php' ?><?php
 
 $pageTitle = 'Secret !...';
 if (isset($_SESSION['nom'])) {
