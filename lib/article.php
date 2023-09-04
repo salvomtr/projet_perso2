@@ -145,14 +145,16 @@ class LibArticle
         return $successOrFailure;
     }
 
-
-    static function readCommentaire()
+//liste les commentaires de l article passe en parametre
+    static function readCommentaires($idArticle)
     {
         // Prépare la requête
         $query = 'SELECT COM.id, COM.textCommentaire, COM.idArticle, COM.idUtilisateur ';
         $query .= ' FROM commentaire COM';
+        $query .= ' WHERE COM.idArticle = :idArticle' ;
         $query .= ' ORDER BY COM.textCommentaire ASC';
         $stmt = getPDO()->prepare($query);
+        $stmt->bindParam(':idArticle', $idArticle);
         // logMsg($stmt->debugDumpParams());
 
         // Exécute la requête

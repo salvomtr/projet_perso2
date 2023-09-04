@@ -16,7 +16,7 @@
                         width="600">
                 </picture>
                 <h2>
-                    <?= $article['titre']?>
+                    <?= $article['titre'] ?>
                 </h2>
                 <p>
                     <small>Difficulté :
@@ -52,9 +52,27 @@
                 <input type="hidden" name="idArticle" value="<?= $article['id'] ?>">
                 <button type="submit">creer</button>
             </form>
+
         </div>
 
-        
+
+        <div>
+            <?php foreach ($listCommentaires as $commentaire) { ?>
+
+                <article class="art p-1 mw-350 f-1-300">
+
+                    <div class="art__summary">
+                        <p>
+                            <?= $commentaire['textCommentaire'] ?>
+                        </p>
+                    </div>
+                </article>
+
+            <?php } ?>
+        </div>
+
+
+
 </main>
 
 
