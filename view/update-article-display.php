@@ -1,7 +1,7 @@
 <?php include '../view/partial/header.php' ?>
 
 
-<main>
+
     <main>
         <h1>
             <?= $pageTitle ?>
@@ -9,10 +9,12 @@
 
         <form id="form-article" method="post" action="/ctrl/update-article.php">
 
+
             <div>
+                <input id="commentaire" type="hidden" value="<?= $article['id']?>" name="id">
                 <br>
                 <label for="title">Titre de votre recette: </label>
-                <input id="title" type="text" placeholder="Titre" name="titre" autofocus>
+                <input id="title" type="text" placeholder="Titre" name="titre" value="<?= $article['titre']?>" autofocus>
                 <br>
                 <label for="description">Description: </label>
                 <input id="description" type="text" placeholder="Description" name="descriptionCourte">
@@ -42,6 +44,6 @@
 
         </form>
     </main>
-</main>
+
 
 <?php include '../view/partial/footer.php' ?>

@@ -41,7 +41,9 @@
             <a href="../ctrl/deletArticle.php?id=<?= $article['id'] ?>">delete article</a>
         </div>
 
-
+        <div>
+            <a href="../ctrl/update-article.php?id=<?= $article['id'] ?>">modif article</a>
+        </div>
 
         <div>
             <form id="form-commentaire" method="post" action="/ctrl/commentaire.php">

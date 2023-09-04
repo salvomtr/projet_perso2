@@ -50,6 +50,8 @@ class LibArticle
     }
 
 
+
+
     // selection l article dont l id est passe'
     static function read($id)
     {
@@ -68,6 +70,9 @@ class LibArticle
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
+
+
 
     static function readAll()
     {
@@ -107,6 +112,29 @@ class LibArticle
 
 
 
+    function update($id, $newTitle, $newContent, $newPicture, $newDescription)
+    {
+
+
+        $pdo = getPDO();
+        $query = "UPDATE article SET titre = :titre, texte = :texte , immage = :immage, descriptionCourte = :descriptionCourte WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':immage', $picture);
+        $stmt->bindParam(':descriptionCourte', $description);
+        $stmt->bindParam(':titre', $itle);
+        $stmt->bindParam(':textArticle', $text);
+        $stmt->bindParam(':id', $id);
+
+        $success = $stmt->execute();
+        return $success;
+
+
+
+        // ...
+    }
+
+    
+
     static function delete($id)
     {
         // $query = 'SELECT article.title, article.texte';
@@ -127,6 +155,9 @@ class LibArticle
     }
 
 
+    //lib dediee aux commentaires
+
+
     static function create_comment($text, $idArticle, $idUser)
     {
         $query = 'INSERT INTO commentaire (textCommentaire, idArticle, idUtilisateur) VALUES';
@@ -145,13 +176,13 @@ class LibArticle
         return $successOrFailure;
     }
 
-//liste les commentaires de l article passe en parametre
+    //liste les commentaires de l article passe en parametre
     static function readCommentaires($idArticle)
     {
         // Prépare la requête
         $query = 'SELECT COM.id, COM.textCommentaire, COM.idArticle, COM.idUtilisateur ';
         $query .= ' FROM commentaire COM';
-        $query .= ' WHERE COM.idArticle = :idArticle' ;
+        $query .= ' WHERE COM.idArticle = :idArticle';
         $query .= ' ORDER BY COM.textCommentaire ASC';
         $stmt = getPDO()->prepare($query);
         $stmt->bindParam(':idArticle', $idArticle);
@@ -164,5 +195,25 @@ class LibArticle
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    
+
+    static function deleteCommentaires($id)
+    {
+        $query = 'DELETE FROM commentaire';
+        $query .= ' WHERE idArticle = :id';
+        $stmt = getPDO()->prepare($query);
+        $stmt->bindParam(':id', $id);
+        // $stmt->bindParam(':picture', $picture);
+        logMsg($stmt->debugDumpParams());
+
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        return $successOrFailure;
+    }
+
+
+
 
 }

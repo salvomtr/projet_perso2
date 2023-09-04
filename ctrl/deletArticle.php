@@ -7,7 +7,8 @@ $pageTitle = 'Articles';
 $id = $_GET['id'];
 
 // Appel de la fonction delete pour effacer l article
-$article = LibArticle::delete($id);
+$ret = LibArticle::deleteCommentaires($id);
+$ret = LibArticle::delete($id);
 
 
 // redirige l utilisateur a la page recette
