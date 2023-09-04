@@ -42,7 +42,7 @@
         </div>
 
         <div>
-            <a href="../ctrl/update-article.php?id=<?= $article['id'] ?>">modif article</a>
+            <a href="../ctrl/update-article-display.php?id=<?= $article['id'] ?>">modif article</a>
         </div>
 
         <div>

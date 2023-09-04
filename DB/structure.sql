@@ -16,7 +16,8 @@ CREATE TABLE article (
     idUtilisateur bigint(20) NOT NULL,
     idCategorie bigint(20) NOT NULL,
     difficulte int(2) NOT NULL,
-    dateHeure timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+    dateHeure timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    pubblication boolean DEFAULT false
 );
 
 -- CREATION TABLE COMMENTAIRE

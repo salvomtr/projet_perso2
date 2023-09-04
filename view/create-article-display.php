@@ -7,7 +7,7 @@
             <?= $pageTitle ?>
         </h1>
 
-        <form id="form-article" method="post" action="/ctrl/update-article.php">
+        <form id="form-article" method="post" action="/ctrl/create-article.php">
 
             <div>
                 <br>

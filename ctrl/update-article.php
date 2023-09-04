@@ -1,15 +1,26 @@
+<?php require_once('../lib/article.php');
+
+session_start(); ?>
+
+
+<?php $pageTitle = 'Update Article' ?> 
+
+
+
 <?php
+$idUser = $_SESSION['user']['id'];
+$title = $_POST['titre'];
+$description = $_POST['descriptionCourte'];
+$text = $_POST['textArticle'];
+$picture = $_POST['immage'];
+$idCategorie = $_POST['idCategorie'];
+$difficulte = $_POST['difficulte'];
+$idArticle = $_POST['id'];
 
-require_once('../lib/article.php');
 
-$pageTitle = 'Articles';
+// Appel de la fonction create() pour creer des articles
+$articles = LibArticle::update($idArticle, $title, $description, $text, $picture, $idCategorie, $difficulte);
 
-$id = $_GET['id'];
 
-// Appel de la fonction read() pour récupérer l article
-$article = LibArticle::read($id); 
-
-// ../view/update-article-display.php
-
-// redirige l utilisateur a la page recette
-include '../view/update-article-display.php' ?>
+header('Location: /ctrl/article.php');
+?>

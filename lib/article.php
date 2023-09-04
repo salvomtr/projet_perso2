@@ -112,18 +112,22 @@ class LibArticle
 
 
 
-    function update($id, $newTitle, $newContent, $newPicture, $newDescription)
+    static function update($id, $title, $description, $textArticle, $immage, $difficulte, $idCategorie)
     {
 
 
         $pdo = getPDO();
-        $query = "UPDATE article SET titre = :titre, texte = :texte , immage = :immage, descriptionCourte = :descriptionCourte WHERE id = :id";
+        $query = "UPDATE article SET titre = :titre, textArticle = :textArticle , immage = :immage, descriptionCourte = :descriptionCourte,";
+        $query .= "difficulte = :difficulte, idCategorie = :idCategorie WHERE id = :id";
         $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':immage', $picture);
-        $stmt->bindParam(':descriptionCourte', $description);
-        $stmt->bindParam(':titre', $itle);
-        $stmt->bindParam(':textArticle', $text);
         $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':immage', $immage);
+        $stmt->bindParam(':descriptionCourte', $description);
+        $stmt->bindParam(':titre', $title);
+        $stmt->bindParam(':textArticle', $textArticle);
+        $stmt->bindParam(':difficulte', $difficulte);
+        $stmt->bindParam(':idCategorie', $idCategorie);
+        
 
         $success = $stmt->execute();
         return $success;
