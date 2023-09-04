@@ -36,5 +36,10 @@ INSERT INTO `commentaire` (`id`, `textCommentaire`, `idArticle`, `idUtilisateur`
 (NULL, 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', '8', '2');
 
 
+SELECT `commentaire.textCommentaire`, `commentaire.idArticle`, `commentaire.idUtilisateur` FROM `commentaire` INNER JOIN `utilisateur` ON `commentaire.idUtilisateur` = `utilisateur.id`;
+
+SELECT commentaire.textCommentaire, commentaire.idArticle, commentaire.idUtilisateur, utilisateur.nom FROM commentaire INNER JOIN utilisateur ON commentaire.idUtilisateur = utilisateur.id;
+
+
 
 

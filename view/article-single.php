@@ -16,7 +16,7 @@
                         width="600">
                 </picture>
                 <h2>
-                    <?= $article['titre'];?>
+                    <?= $article['titre']?>
                 </h2>
                 <p>
                     <small>Difficulté :
@@ -54,6 +54,7 @@
             </form>
         </div>
 
+        
 </main>
 
 

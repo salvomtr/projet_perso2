@@ -145,4 +145,22 @@ class LibArticle
         return $successOrFailure;
     }
 
+
+    static function readCommentaire()
+    {
+        // Prépare la requête
+        $query = 'SELECT COM.id, COM.textCommentaire, COM.idArticle, COM.idUtilisateur ';
+        $query .= ' FROM commentaire COM';
+        $query .= ' ORDER BY COM.textCommentaire ASC';
+        $stmt = getPDO()->prepare($query);
+        // logMsg($stmt->debugDumpParams());
+
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }
