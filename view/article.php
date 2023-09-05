@@ -9,7 +9,7 @@
     <div class="container d-flex wrap jc-center mw-1200 m-auto">
         <!-- liste des posts / recettes -->
         <?php foreach ($articles as $article) { ?>
-            
+
             <article class="art p-1 mw-350 f-1-300">
 
                 <header class="art__header">
@@ -20,9 +20,15 @@
                     <h2>
                         <?= $article['titre'] ?>
                     </h2>
+
+                    <p> 
+                    <?= $article['descriptionCourte'] ?>
+
+                    </p>
+
                     <p>
-                        <small>Difficulté : 
-                            
+                        <small>Difficulté :
+
                             <?php for ($i = 1; $i <= $article['difficulte']; $i++) { ?>
                                 ⭐
                             <?php } ?>

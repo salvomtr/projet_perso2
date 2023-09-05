@@ -18,6 +18,15 @@
                 <h2>
                     <?= $article['titre'] ?>
                 </h2>
+
+
+                <p>
+                    <?= $article['descriptionCourte'] ?>
+
+                </p>
+
+
+
                 <p>
                     <small>Difficulté :
 

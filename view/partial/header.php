@@ -28,7 +28,7 @@ $theme = 'style';
                 <a class="button_menu"  href="/ctrl/admin.php">Admin</a>
                 <a class="button_menu"  href="/ctrl/create-article-display.php">Create Article</a>
                
-                <?php if ($_SESSION['nom']) { ?>
+                <?php if (array_key_exists('nom',$_SESSION) && $_SESSION['nom']) { ?>
                     Hello "<?= $_SESSION['nom'] ?>"</li>
                     <a href="/ctrl/logout.php">Logout</a></li>
                 <?php } else { ?>

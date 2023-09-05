@@ -1,22 +1,7 @@
 <?php
 
-//echo 'hello';
+require_once($_SERVER['DOCUMENT_ROOT'] . '/lib/db.php');
 
-// Ouvre une connexion à la Base de données,
-// et configure la connexion pour afficher toutes les erreurs (s'il s'en produit)
-function getPDO()
-{
-    $host = '127.0.0.1';
-    $port = 3306;
-    $dbname = 'projet_perso';
-    $user = 'root';
-    $password = '';
-    $dataSourceName = "mysql:host=$host;port=$port;dbname=$dbname";
-    $pdo = new PDO($dataSourceName, $user, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    return $pdo;
-}
 function logMsg($msg)
 {
     echo 'foo';
@@ -32,7 +17,7 @@ class LibArticle
         $query = 'INSERT INTO article (idUtilisateur, titre, descriptionCourte, textArticle, immage, idCategorie, difficulte) VALUES';
         $query .= ' (:idUtilisateur, :titre, :descriptionCourte, :textArticle, :immage, :idCategorie, :difficulte)';
 
-        $stmt = getPDO()->prepare($query);
+        $stmt = LibDb::getPDO()->prepare($query);
         $stmt->bindParam(':idUtilisateur', $idUser);
         $stmt->bindParam(':difficulte', $difficulte);
         $stmt->bindParam(':idCategorie', $idCategorie);
@@ -59,7 +44,7 @@ class LibArticle
         $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.dateHeure, ART.difficulte';
         $query .= ' FROM article ART';
         $query .= ' WHERE ART.id = :id';
-        $stmt = getPDO()->prepare($query);
+        $stmt = LibDb::getPDO()->prepare($query);
         $stmt->bindParam(':id', $id);
         //    logMsg($stmt->debugDumpParams());
 
@@ -80,7 +65,7 @@ class LibArticle
         $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure';
         $query .= ' FROM article ART';
         $query .= ' ORDER BY ART.titre ASC';
-        $stmt = getPDO()->prepare($query);
+        $stmt = LibDb::getPDO()->prepare($query);
         // logMsg($stmt->debugDumpParams());
 
         // Exécute la requête
@@ -99,7 +84,7 @@ class LibArticle
         $query = 'SELECT CAT.id, CAT.nomCategorie';
         $query .= ' FROM categorie CAT';
         $query .= ' ORDER BY CAT.nomCategorie ASC';
-        $stmt = getPDO()->prepare($query);
+        $stmt = LibDb::getPDO()->prepare($query);
         // logMsg($stmt->debugDumpParams());
 
         // Exécute la requête
@@ -116,7 +101,7 @@ class LibArticle
     {
 
 
-        $pdo = getPDO();
+        $pdo = LibDb::getPDO();
         $query = "UPDATE article SET titre = :titre, textArticle = :textArticle , immage = :immage, descriptionCourte = :descriptionCourte,";
         $query .= "difficulte = :difficulte, idCategorie = :idCategorie WHERE id = :id";
         $stmt = $pdo->prepare($query);
@@ -146,7 +131,7 @@ class LibArticle
         $query .= ' FROM article';
         $query .= ' WHERE article.id = :id';
 
-        $stmt = getPDO()->prepare($query);
+        $stmt = LibDb::getPDO()->prepare($query);
         $stmt->bindParam(':id', $id);
         // $stmt->bindParam(':picture', $picture);
         logMsg($stmt->debugDumpParams());
@@ -167,7 +152,7 @@ class LibArticle
         $query = 'INSERT INTO commentaire (textCommentaire, idArticle, idUtilisateur) VALUES';
         $query .= ' (:textCommentaire, :idArticle, :idUtilisateur)';
 
-        $pdo = getPDO(); // Assuming you have a function to get the PDO connection
+        $pdo = LibDb::getPDO(); // Assuming you have a function to get the PDO connection
 
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':textCommentaire', $text);
@@ -188,7 +173,7 @@ class LibArticle
         $query .= ' FROM commentaire COM';
         $query .= ' WHERE COM.idArticle = :idArticle';
         $query .= ' ORDER BY COM.textCommentaire ASC';
-        $stmt = getPDO()->prepare($query);
+        $stmt = LibDb::getPDO()->prepare($query);
         $stmt->bindParam(':idArticle', $idArticle);
         // logMsg($stmt->debugDumpParams());
 
@@ -205,7 +190,7 @@ class LibArticle
     {
         $query = 'DELETE FROM commentaire';
         $query .= ' WHERE idArticle = :id';
-        $stmt = getPDO()->prepare($query);
+        $stmt = LibDb::getPDO()->prepare($query);
         $stmt->bindParam(':id', $id);
         // $stmt->bindParam(':picture', $picture);
         logMsg($stmt->debugDumpParams());

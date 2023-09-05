@@ -20,7 +20,7 @@
                 <input id="description" type="text" placeholder="Description" name="descriptionCourte" value="<?= $article['descriptionCourte']?>">
                 <br>
                 <label for="text">Texte de votre recette: </label>
-                <textarea id="text" placeholder="Texte" name="textArticle" rows="5" cols="33" value="<?= $article['textArticle']?>"></textarea>
+                <textarea id="text" placeholder="Texte" name="textArticle" rows="5" cols="33"><?= $article['textArticle']?></textarea>
 
 
                 <br>
