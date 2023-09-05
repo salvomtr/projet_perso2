@@ -17,7 +17,6 @@ $motDePasse = $_POST['password'];
 
 //cherche un utilisateur que possede cette mail et ce password
 $utilisateur = LibUser::login($mail, $motDePasse);
-var_dump($utilisateur);
 if ($utilisateur !== null) {
     $isRegistred = true;
 }

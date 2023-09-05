@@ -78,8 +78,11 @@ class LibUser
         if ($result == false) {
             return null;
         }
-        password_verify($motDePasse, $result['motDePasse']);
-        return $result;
+        if (password_verify($motDePasse, $result['motDePasse'])) {
+            return $result;
+        }
+        return null;
+
     }
 
 }
