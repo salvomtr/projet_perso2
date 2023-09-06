@@ -117,12 +117,8 @@ class LibArticle
         $success = $stmt->execute();
         return $success;
 
-
-
-        // ...
     }
 
-    
 
     static function delete($id)
     {
@@ -145,7 +141,6 @@ class LibArticle
 
 
     //lib dediee aux commentaires
-
 
     static function create_comment($text, $idArticle, $idUser)
     {
@@ -201,8 +196,5 @@ class LibArticle
 
         return $successOrFailure;
     }
-
-
-
 
 }

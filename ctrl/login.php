@@ -15,6 +15,7 @@ $isRegistred = false;
 $mail = $_POST['mail'];
 $motDePasse = $_POST['password'];
 
+
 //cherche un utilisateur que possede cette mail et ce password
 $utilisateur = LibUser::login($mail, $motDePasse);
 if ($utilisateur !== null) {
@@ -27,7 +28,9 @@ if ($isRegistred) {
 
     $_SESSION['nom'] = $utilisateur['nom'];
     $_SESSION['motDePasse'] = $utilisateur['motDePasse'];
-    $_SESSION['user'] = $utilisateur;
+    $_SESSION['utilisateur'] = $utilisateur;
+   
+
 
     header('Location: /');
     exit;

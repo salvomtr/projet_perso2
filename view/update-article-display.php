@@ -1,14 +1,12 @@
 <?php include '../view/partial/header.php' ?>
 
 
-
     <main>
         <h1>
             <?= $pageTitle ?>
         </h1>
 
         <form id="form-article" method="post" action="/ctrl/update-article.php">
-
 
             <div>
                 <input id="idArticle" type="hidden" value="<?= $article['id']?>" name="id">

@@ -9,10 +9,8 @@ $id = $_GET['id'];
 $article = LibArticle::read($id);
 
 
-
 //list le commentaire de l article
 $listCommentaires = LibArticle::readCommentaires($id);
-
 
 ?>
 

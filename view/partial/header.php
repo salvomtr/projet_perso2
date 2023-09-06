@@ -15,7 +15,9 @@ $theme = 'style';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/asset/style.css">
-    <title><?= $pageTitle ?></title>
+    <title>
+        <?= $pageTitle ?>
+    </title>
 </head>
 
 <body>
@@ -24,16 +26,30 @@ $theme = 'style';
         <nav>
             <ul class="menu_element">
                 <a class="button_menu" href="/ctrl/accueil.php">Accueil</a>
-                <a class="button_menu"   href="/ctrl/article.php">Recettes</a>
-                <a class="button_menu"  href="/ctrl/admin.php">Admin</a>
-                <a class="button_menu"  href="/ctrl/create-article-display.php">Create Article</a>
-               
-                <?php if (array_key_exists('nom',$_SESSION) && $_SESSION['nom']) { ?>
-                    Hello "<?= $_SESSION['nom'] ?>"</li>
-                    <a href="/ctrl/logout.php">Logout</a></li>
-                <?php } else { ?>
-                    <a class="button_menu" href="/ctrl/login-display.php">Login</a></li>
+                <a class="button_menu" href="/ctrl/article.php">Recettes</a>
+
+                <?php if (
+                    array_key_exists('utilisateur', $_SESSION)
+                    && isset($_SESSION['utilisateur'])
+                    && $_SESSION['utilisateur']['idRole'] == 1
+
+                        ) { ?>
+
+                    <a class="button_menu" href="/ctrl/create-article-display.php">Create Article</a>
+                    <a class="button_menu" href="/ctrl/admin.php">Admin</a>
                 <?php } ?>
+
+
+                <?php if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) { ?>
+
+                    Hello "<?= $_SESSION['nom'] ?>"
+                   
+                    <a href="/ctrl/logout.php">Logout</a>
+
+                <?php } else { ?>
+                    <a class="button_menu" href="/ctrl/login-display.php">Login</a>
+                <?php } ?>
+
             </ul>
         </nav>
     </header>
