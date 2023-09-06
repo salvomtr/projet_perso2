@@ -15,20 +15,21 @@ $isRegistred = false;
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $mail = trim(htmlspecialchars($_POST['mail']));
-$motDePasse = $_POST['password'];
+$passwordClear = trim(htmlspecialchars($_POST['password']));
 $idRole = 2;
 
 //creer un utilisateur que avec ces attribue
 $retour = LibUser::create($nom, $prenom, $mail, $motDePasse, $idRole);
-if ($retour !== null) {
-    $isRegistred = true;
-}
-
+if ($retour) {
 // appel fucntion login
 $utilisateur = LibUser::login($mail, $motDePasse);
 if ($utilisateur !== null) {
-    $isRegistred = true;
+        $_SESSION['nom'] = $utilisateur['nom'];
+        $_SESSION['motDePasse'] = $utilisateur['motDePasse'];
+        $_SESSION['utilisateur'] = $utilisateur;
+        header('Location: /');
+        exit;
 }
 
-
 header('Location: /ctrl/inscription-display.php');
+}

@@ -1,4 +1,4 @@
-<?php include '../view/partial/header.php' ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/view/partial/header.php') ?>
 
 <main>
     <h1>
@@ -9,16 +9,16 @@
 
         <div>
             <label for="prenom">Prenom</label>
-            <input id="prenom" type="text" name="prenom" autofocus>
+            <input id="prenom" type="text" name="prenom" autofocus required>
             
             <label for="nom">Nom</label>
-            <input id="nom" type="text" name="nom">
+            <input id="nom" type="text" name="nom" required>
 
             <label for="mail">E-mail</label>
-            <input id="mail" type="text" name="mail" autofocus>
+            <input id="mail" type="text" name="mail" required>
 
-            <label for="password_1">Password</label>
-            <input id="password_2" type="password" name="password">
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" required>
             
             <button type="submit">Submit</button>
         </div>
@@ -26,4 +26,4 @@
     </form>
 </main>
 
-<?php include '../view/partial/footer.php' ?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/view/partial/footer.php') ?>

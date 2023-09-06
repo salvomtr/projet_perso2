@@ -28,7 +28,7 @@ class LibUser
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':mail', $mail);
-        $stmt->bindParam(':motDePasse', $motDePasse);
+        $stmt->bindParam(':motDePasse', $passwordHashed );
         $stmt->bindParam(':idRole', $idRole);
         logMsg($stmt->debugDumpParams());
 

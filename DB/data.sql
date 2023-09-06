@@ -37,8 +37,9 @@ INSERT INTO `commentaire` (`id`, `textCommentaire`, `idArticle`, `idUtilisateur`
 
 
 SELECT `commentaire.textCommentaire`, `commentaire.idArticle`, `commentaire.idUtilisateur` FROM `commentaire` INNER JOIN `utilisateur` ON `commentaire.idUtilisateur` = `utilisateur.id`;
-
 SELECT commentaire.textCommentaire, commentaire.idArticle, commentaire.idUtilisateur, utilisateur.nom FROM commentaire INNER JOIN utilisateur ON commentaire.idUtilisateur = utilisateur.id;
+SELECT U.nom FROM utilisateur AS U INNER JOIN commentaire AS COM ON COM.idUtilisateur = U.id;
+SELECT U.nom, ART.descriptionCourte, COM.textCommentaire, COM.id AS COM_ID, ART.id AS ART_ID FROM utilisateur AS U INNER JOIN commentaire AS COM ON COM.idUtilisateur = U.id INNER JOIN article AS ART ON COM.idArticle = ART.id;
 
 
 

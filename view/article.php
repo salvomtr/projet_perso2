@@ -1,6 +1,5 @@
 <?php include '../view/partial/header.php' ?>
 
-
 <main class="p-1">
     <h1>
         <?= $pageTitle ?>

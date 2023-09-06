@@ -9,9 +9,11 @@
 
         <div>
             <label for="mail">E-mail</label>
-            <input id="mail" type="text" name="mail" autofocus>
-            <label for="password_1">Password</label>
-            <input id="password_2" type="password" name="password">
+            <input id="mail" type="text" name="mail" autofocus required>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" required>
+
             <button type="submit">Submit</button>
         </div>
 

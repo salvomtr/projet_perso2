@@ -3,9 +3,10 @@
 session_start();
 
 
-$isregistered = false;
+$isRegistered = false;
 if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) {
-    $isregistered = true;
+    $isRegistered = true;
+    $idRole = $_SESSION['utilisateur']['idRole'];
 }
 
 ?>
@@ -29,31 +30,33 @@ if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) {
         <nav>
             <ul class="menu_element">
 
-                <?php if ($isregistered) { ?> Hello "
+                <?php if ($isRegistered) { ?> Hello "
                     <?= $_SESSION['nom'] ?>"
                 <?php } ?>
 
                 <a class="button_menu" href="/ctrl/accueil.php">Accueil</a>
                 <a class="button_menu" href="/ctrl/article.php">Recettes</a>
 
-                <?php if (
-                    array_key_exists('utilisateur', $_SESSION)
-                    && isset($_SESSION['utilisateur'])
-                    && $_SESSION['utilisateur']['idRole'] == 1
+                <?php if ($isRegistered) { ?>
+                    <a class="button_menu" href="/ctrl/create-article-display.php">Create Article</a>
+                <?php } ?>
 
+                <?php if (
+                    $isRegistered
+                    && $idRole == 1
                 ) { ?>
 
-                    <a class="button_menu" href="/ctrl/create-article-display.php">Create Article</a>
                     <a class="button_menu" href="/ctrl/admin.php">Admin</a>
                 <?php } ?>
 
 
-                <?php if ($isregistered) { ?>
+                <?php if ($isRegistered) { ?>
 
                     <a href="/ctrl/logout.php">Logout</a>
 
                 <?php } else { ?>
                     <a class="button_menu" href="/ctrl/login-display.php">Login</a>
+                    <a class="button_menu" href="/ctrl/inscription-display.php">Inscription</a>
                 <?php } ?>
 
             </ul>

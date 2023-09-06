@@ -1,5 +1,15 @@
 <?php include '../view/partial/header.php' ?>
 
+<?php
+$isRegistered = false;
+$idRole = 0;
+if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) {
+    $isRegistered = true;
+    $idRole = $_SESSION['utilisateur']['idRole'];
+    $utilisateur = $_SESSION['utilisateur'];
+}
+?>
+
 <main class="p-1">
     <h1>
         <?= $pageTitle ?>
@@ -20,7 +30,6 @@
 
                 <p>
                     <?= $article['descriptionCourte'] ?>
-
                 </p>
 
                 <p>
@@ -38,14 +47,17 @@
                 </p>
             </div>
         </article>
+       
+        <?php if ($idRole == 1 || $utilisateur['id'] == $article['idUtilisateur']) { ?>
 
-        <div>
-            <a href="../ctrl/deletArticle.php?id=<?= $article['id'] ?>">delete article</a>
-        </div>
+            <div>
+                <a href="../ctrl/deletArticle.php?id=<?= $article['id'] ?>">delete article</a>
+            </div>
 
-        <div>
-            <a href="../ctrl/update-article-display.php?id=<?= $article['id'] ?>">modif article</a>
-        </div>
+            <div>
+                <a href="../ctrl/update-article-display.php?id=<?= $article['id'] ?>">modif article</a>
+            </div>
+        <?php } ?>
 
         <div>
             <form id="form-commentaire" method="post" action="/ctrl/commentaire.php">
@@ -62,7 +74,6 @@
             <?php foreach ($listCommentaires as $commentaire) { ?>
 
                 <article class="art p-1 mw-350 f-1-300">
-
                     <div class="art__summary">
                         <p>
                             <?= $commentaire['textCommentaire'] ?>
