@@ -10,7 +10,7 @@ session_start();
 //lit les infos saisie dans le formulaire avec $_POST
 $text = $_POST['textCommentaire'];
 $idArticle = $_POST['idArticle'];
-$idUser = $_SESSION['user']['id'];
+$idUser = $_SESSION['utilisateur']['id'];
 
 
 
@@ -20,4 +20,3 @@ $articles = LibArticle::create_comment($text, $idArticle, $idUser);
 //redirige utlisateur vers l article courant
 header("Location: /ctrl/article-single.php?id=$idArticle");
 ?>
-

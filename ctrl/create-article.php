@@ -3,12 +3,12 @@
 session_start(); ?>
 
 
-<?php $pageTitle = 'Create Article' ?> 
+<?php $pageTitle = 'Create Article' ?>
 
 
 
 <?php
-$idUser = $_SESSION['user']['id'];
+$idUser = $_SESSION['utilisateur']['id'];
 $title = $_POST['titre'];
 $description = $_POST['descriptionCourte'];
 $text = $_POST['textArticle'];
