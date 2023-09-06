@@ -2,8 +2,11 @@
 
 session_start();
 
-$theme = 'style';
 
+$isregistered = false;
+if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) {
+    $isregistered = true;
+}
 
 ?>
 
@@ -25,6 +28,11 @@ $theme = 'style';
     <header class="p-1 d-flex align-center">
         <nav>
             <ul class="menu_element">
+
+                <?php if ($isregistered) { ?> Hello "
+                    <?= $_SESSION['nom'] ?>"
+                <?php } ?>
+
                 <a class="button_menu" href="/ctrl/accueil.php">Accueil</a>
                 <a class="button_menu" href="/ctrl/article.php">Recettes</a>
 
@@ -33,17 +41,15 @@ $theme = 'style';
                     && isset($_SESSION['utilisateur'])
                     && $_SESSION['utilisateur']['idRole'] == 1
 
-                        ) { ?>
+                ) { ?>
 
                     <a class="button_menu" href="/ctrl/create-article-display.php">Create Article</a>
                     <a class="button_menu" href="/ctrl/admin.php">Admin</a>
                 <?php } ?>
 
 
-                <?php if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) { ?>
+                <?php if ($isregistered) { ?>
 
-                    Hello "<?= $_SESSION['nom'] ?>"
-                   
                     <a href="/ctrl/logout.php">Logout</a>
 
                 <?php } else { ?>
