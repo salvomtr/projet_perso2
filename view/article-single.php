@@ -3,7 +3,7 @@
 <?php
 $isRegistered = false;
 $idRole = 0;
-if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) {
+if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur'])) {
     $isRegistered = true;
     $idRole = $_SESSION['utilisateur']['idRole'];
     $utilisateur = $_SESSION['utilisateur'];
@@ -42,12 +42,22 @@ if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) {
             </header>
 
             <div class="art__summary">
+
                 <p>
-                    <?= $article['textArticle'] ?>
+                    <?php
+                    // Divise la chaîne de texte $article['textArticle'] en un tableau de lignes
+                    //  en utilisant des caractères de retour à la ligne comme délimiteurs.
+                    // $linesText = explode('\r', $article['textArticle']);
+                    $linesText = preg_split("/(\r\n|\n|\r)/", $article['textArticle']);
+                    foreach ($linesText as $line) { ?>
+                        <?= $line ?><br>
+                    <?php } ?>
                 </p>
+
             </div>
         </article>
-       
+        <!--Se on est le gestionnaire ou l auteur de l article redirige', 
+        on as le droit de supprimer ou modifier l article  -->
         <?php if ($idRole == 1 || $utilisateur['id'] == $article['idUtilisateur']) { ?>
 
             <div>
