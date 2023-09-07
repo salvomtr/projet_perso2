@@ -44,3 +44,4 @@ SELECT U.nom, ART.descriptionCourte, COM.textCommentaire, COM.id AS COM_ID, ART.
 
 
 
+

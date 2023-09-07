@@ -20,8 +20,8 @@
                         <?= $article['titre'] ?>
                     </h2>
 
-                    <p> 
-                    <?= $article['descriptionCourte'] ?>
+                    <p>
+                        <?= $article['descriptionCourte'] ?>
 
                     </p>
 
@@ -38,7 +38,20 @@
 
                 <div class="art__summary">
                     <p>
-                        <?= $article['textArticle'] ?>
+                        <?php
+                        // Divise la chaîne de texte $article['textArticle'] en un tableau de lignes
+                        //  en utilisant des caractères de retour à la ligne comme délimiteurs.
+                        // $linesText = explode('\r', $article['textArticle']);
+                        $linesText = preg_split("/(\r\n|\n|\r)/", $article['textArticle']);
+                        $linenb = 0;
+                        foreach ($linesText as $line) {
+                            $linenb++;
+                            if ($linenb > 6) {
+                                break;
+                            }
+                            ?>
+                            <?= $line ?><br>
+                        <?php } ?>
                     </p>
                 </div>
 

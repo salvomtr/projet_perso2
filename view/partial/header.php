@@ -4,7 +4,7 @@ session_start();
 
 
 $isRegistered = false;
-if (array_key_exists('nom', $_SESSION) && $_SESSION['nom']) {
+if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur'])) {
     $isRegistered = true;
     $idRole = $_SESSION['utilisateur']['idRole'];
 }
