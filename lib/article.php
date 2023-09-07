@@ -41,7 +41,7 @@ class LibArticle
     static function read($id)
     {
         // Prépare la requête
-        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.dateHeure, ART.difficulte';
+        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.dateHeure, ART.difficulte, ART.pubblication';
         $query .= ' FROM article ART';
         $query .= ' WHERE ART.id = :id';
         $stmt = LibDb::getPDO()->prepare($query);
@@ -68,6 +68,25 @@ class LibArticle
         $stmt = LibDb::getPDO()->prepare($query);
         // logMsg($stmt->debugDumpParams());
 
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    // fucntion pour lire que les article publie'
+
+    static function readArtPub($idUtilisateur)
+    {
+        // Prépare la requête
+        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure, ART.pubblication';
+        $query .= ' FROM article ART';
+        $query .= ' WHERE ART.pubblication = 1 or ART.idUtilisateur = :idUtilisateur';
+        $query .= ' ORDER BY ART.titre ASC';
+        $stmt = LibDb::getPDO()->prepare($query);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
         // Exécute la requête
         $successOrFailure = $stmt->execute();
         //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
@@ -103,7 +122,7 @@ class LibArticle
 
         $pdo = LibDb::getPDO();
         $query = "UPDATE article SET titre = :titre, textArticle = :textArticle , immage = :immage, descriptionCourte = :descriptionCourte,";
-        $query .= "difficulte = :difficulte, idCategorie = :idCategorie WHERE id = :id";
+        $query .= "difficulte = :difficulte, idCategorie = :idCategorie, pubblication = 0 WHERE id = :id";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':immage', $immage);
@@ -112,7 +131,7 @@ class LibArticle
         $stmt->bindParam(':textArticle', $textArticle);
         $stmt->bindParam(':difficulte', $difficulte);
         $stmt->bindParam(':idCategorie', $idCategorie);
-        
+
 
         $success = $stmt->execute();
         return $success;
@@ -179,7 +198,7 @@ class LibArticle
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
+
 
     static function deleteCommentaires($id)
     {
@@ -196,5 +215,50 @@ class LibArticle
 
         return $successOrFailure;
     }
+
+
+
+    static function listArtComm()
+    {
+        // Prépare la requête
+        $query = 'SELECT ';
+        $query .= ' ART.id AS idArticle';
+        $query .= ', ART.titre';
+        $query .= ', U.nom';
+        $query .= ', U.id AS idUtilisateur';
+        $query .= ', ART.descriptionCourte';
+        $query .= ', ART.dateHeure';
+        $query .= ', ART.pubblication';
+        $query .= ' FROM article AS ART';
+        $query .= ' INNER JOIN utilisateur AS U ON ART.idUtilisateur = U.id';
+        // $query .= ' WHERE ART.dateHeure > date(now) - interval 10 days';
+        $stmt = LibDb::getPDO()->prepare($query);
+
+
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+
+
+    static function publier($id)
+    {
+
+
+        $pdo = LibDb::getPDO();
+        $query = "UPDATE article SET pubblication = NOT pubblication";
+        $query .= " WHERE id = :id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $id);
+        
+        $success = $stmt->execute();
+        return $success;
+
+    }
+
 
 }

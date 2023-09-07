@@ -10,20 +10,26 @@
     <table>
         <tr>
             <th>user</th>
-            <th>article</th>
-            <th>commentaire</th>
-        </tr>
-        <tr>
-            <td>
-                <?= $utilisateur['nom'] ?>
-            </td>
+            <th>titre</th>
+            <th>publication</th>
         </tr>
 
+        <?php foreach ($rows as $row) { ?>
+            <tr>
+                <td>
+                <?= $row['nom'] ?>
+                </td>
+
+                <td>
+                    <a href="../ctrl/article-single.php?id=<?= $row['idArticle'] ?>"><?= $row['titre'] ?></a>
+                </td>
+
+                <td>
+                    <?= $row['pubblication'] ?>
+                </td>
+            </tr>
+        <?php } ?>
     </table>
-
-
-
-
 
 </main>
 

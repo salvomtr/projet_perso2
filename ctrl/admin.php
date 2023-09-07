@@ -10,7 +10,5 @@ if (isset($_SESSION['nom'])) {
 
 <?php include '../view/admin.php' ?><?php
 
-$pageTitle = 'Secret !...';
-if (isset($_SESSION['nom'])) {
-    $pageTitle = 'No more secret :)';
-}
+
+

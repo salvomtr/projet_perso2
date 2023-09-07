@@ -1,19 +1,16 @@
-<?php session_start(); ?>
-<?php $pageTitle = 'Recettes'?>
+<?php $pageTitle = ''?>
 
 <?php require_once('../lib/article.php');?>
 
-<?php
-if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur'])) {
-    $idUtilisateur = $_SESSION['utilisateur']['id'];
-}
+<?php 
+$id = $_GET['id'];
 ?>
 
 <?php
 // Inclure le fichier contenant la fonction readAll() et la connexion à la base de données
 
 // Appel de la fonction readAll() pour récupérer tous les articles
-$articles = LibArticle::readArtPub($idUtilisateur);
+$succes = LibArticle::publier($id);
 
 ?>
 <?php include '../view/article.php' ?>

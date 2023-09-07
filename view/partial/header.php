@@ -46,7 +46,7 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                     && $idRole == 1
                 ) { ?>
 
-                    <a class="button_menu" href="/ctrl/admin.php">Admin</a>
+                    <a class="button_menu" href="/ctrl/admin-display.php">Admin</a>
                 <?php } ?>
 
 

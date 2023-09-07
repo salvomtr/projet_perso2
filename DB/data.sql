@@ -7,7 +7,7 @@
 -- INSERT INTO `categorie` (`id`, `nomCategorie`) VALUES (NULL, 'vegane'), (NULL, 'vegetarienne'), (NULL, 'sans gluten'), (NULL, 'ethnique'), (NULL, 'desserts');
 
 
-
+[
 
 INSERT INTO `role` (`id`, `nomRole`) VALUES (NULL, 'gestionnaire'), (NULL, 'utilisateur');
 
@@ -40,7 +40,14 @@ SELECT `commentaire.textCommentaire`, `commentaire.idArticle`, `commentaire.idUt
 SELECT commentaire.textCommentaire, commentaire.idArticle, commentaire.idUtilisateur, utilisateur.nom FROM commentaire INNER JOIN utilisateur ON commentaire.idUtilisateur = utilisateur.id;
 SELECT U.nom FROM utilisateur AS U INNER JOIN commentaire AS COM ON COM.idUtilisateur = U.id;
 SELECT U.nom, ART.descriptionCourte, COM.textCommentaire, COM.id AS COM_ID, ART.id AS ART_ID FROM utilisateur AS U INNER JOIN commentaire AS COM ON COM.idUtilisateur = U.id INNER JOIN article AS ART ON COM.idArticle = ART.id;
+SELECT ART.id AS idArticle, ART.titre, ART.descriptionCourte, ART.dateHeure, ART.pubblication FROM article as ART INNER JOIN utilisateur AS U ON ART.idUtilisateur = U.id;
+ 
+ 
+ 
+ 
+ WHERE ART.dateHeure > date(now) - interval 10 days
 
+ UPDATE article SET pubblication = NOT pubblication WHERE id=26;
 
 
 

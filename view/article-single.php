@@ -8,6 +8,9 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
     $idRole = $_SESSION['utilisateur']['idRole'];
     $utilisateur = $_SESSION['utilisateur'];
 }
+
+
+
 ?>
 
 <main class="p-1">
@@ -69,11 +72,31 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
             </div>
         <?php } ?>
 
+
+
+
+        <?php if ($idRole == 1) { ?>
+
+            <?php if ($article['pubblication'] == 1) { ?>
+                <div>
+                    <a href="../ctrl/publier.php?id=<?= $article['id'] ?>">depublier</a>
+                </div>
+            <?php } elseif ($article['pubblication'] == 0) { ?>
+                <div>
+                    <a href="../ctrl/publier.php?id=<?= $article['id'] ?>">publier</a>
+                </div>
+            <?php } ?>
+
+        <?php } ?>
+
+
+
+
         <div>
             <form id="form-commentaire" method="post" action="/ctrl/commentaire.php">
                 <br>
                 <label for="commentaire">Commentaire: </label>
-                <input id="commentaire" type="text" placeholder="text" name="textCommentaire" autofocus>
+                <input id="commentaire" type="text" placeholder="text" name="textCommentaire" autofocus required>
                 <br>
                 <input type="hidden" name="idArticle" value="<?= $article['id'] ?>">
                 <button type="submit">creer</button>
