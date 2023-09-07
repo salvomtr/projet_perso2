@@ -231,7 +231,7 @@ class LibArticle
         $query .= ', ART.pubblication';
         $query .= ' FROM article AS ART';
         $query .= ' INNER JOIN utilisateur AS U ON ART.idUtilisateur = U.id';
-        // $query .= ' WHERE ART.dateHeure > date(now) - interval 10 days';
+        $query .= ' WHERE ART.dateHeure > date_sub(curdate(), interval 30 day)';
         $stmt = LibDb::getPDO()->prepare($query);
 
 
