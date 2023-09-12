@@ -6,9 +6,6 @@ $pageTitle = 'Secret !...';
 if (isset($_SESSION['nom'])) {
     $pageTitle = 'No more secret :)';
 }
-?> 
+?>
 
-<?php include '../view/admin.php' ?><?php
-
-
-
+<?php include '../view/admin.php' ?>

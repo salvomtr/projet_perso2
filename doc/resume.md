@@ -4,7 +4,7 @@ reformuler 1-2 partie sans partie technoique
 
 BESOIN DU CLIENT:
 
-Dans une cadre de reconversionne professionelle, un ancienne cuisinier veut-il developper son propre site internet dont il pourra partager ses propres recettes avec des autres utilisateurs, que pouvent aussi partageres les propres.
+Dans une cadre de reconversionne professionelle, un ancienne cuisinier veut developper son propre site internet dont il pourra partager ses propres recettes avec des autres utilisateurs, que pouvent aussi partageres les propres.
 Un utilisateur peut-il ecrire des articles et egalment commantaire des articles deja existantes.
 Le(s) gestionnaire(s) peut-il aussi creer des articles, commantaire, moderer les commantaires et les articles.
 

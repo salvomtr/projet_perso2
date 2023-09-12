@@ -1,7 +1,7 @@
 <?php session_start(); ?>
-<?php $pageTitle = 'Recettes'?>
+<?php $pageTitle = 'Recettes' ?>
 
-<?php require_once('../lib/article.php');?>
+<?php require_once('../lib/article.php'); ?>
 
 <?php
 if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur'])) {

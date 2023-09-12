@@ -9,17 +9,17 @@
 
         <div>
             <label for="prenom">Prenom</label>
-            <input id="prenom" type="text" name="prenom" autofocus required>
-            
+            <input id="prenom" type="text" name="prenom" minlength="3" maxlength="20" autofocus required>
+
             <label for="nom">Nom</label>
-            <input id="nom" type="text" name="nom" required>
+            <input id="nom" type="text" name="nom" minlength="3" maxlength="20" required>
 
             <label for="mail">E-mail</label>
-            <input id="mail" type="text" name="mail" required>
+            <input id="mail" type="text" name="mail" minlength="5" maxlength="319" required>
 
             <label for="password">Password</label>
-            <input id="password" type="password" name="password" required>
-            
+            <input id="password" type="password" name="password" minlength="4" maxlength="20" required>
+
             <button type="submit">Submit</button>
         </div>
 

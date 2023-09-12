@@ -3,7 +3,7 @@
 session_start(); ?>
 
 
-<?php $pageTitle = 'Create Article' ?> 
+<?php $pageTitle = 'Create Article' ?>
 
 
 

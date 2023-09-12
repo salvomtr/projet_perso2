@@ -1,4 +1,4 @@
-<?php require_once('../lib/article.php');  ?>
+<?php require_once('../lib/article.php'); ?>
 
 <?php
 

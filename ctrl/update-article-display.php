@@ -7,7 +7,7 @@ $pageTitle = 'Articles';
 $id = $_GET['id'];
 
 // Appel de la fonction read() pour récupérer l article
-$article = LibArticle::read($id); 
+$article = LibArticle::read($id);
 $listCategories = LibArticle::listCategorie();
 // ../view/update-article-display.php
 

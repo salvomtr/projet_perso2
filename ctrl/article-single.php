@@ -1,6 +1,6 @@
-<?php $pageTitle = ''?>
+<?php $pageTitle = '' ?>
 
-<?php require_once('../lib/article.php');?>
+<?php require_once('../lib/article.php'); ?>
 
 <?php
 $id = $_GET['id'];

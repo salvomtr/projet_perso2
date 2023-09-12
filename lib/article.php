@@ -41,7 +41,7 @@ class LibArticle
     static function read($id)
     {
         // Prépare la requête
-        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.dateHeure, ART.difficulte, ART.pubblication';
+        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.dateHeure, ART.difficulte, ART.pubblication, ART.idCategorie';
         $query .= ' FROM article ART';
         $query .= ' WHERE ART.id = :id';
         $stmt = LibDb::getPDO()->prepare($query);
@@ -81,7 +81,7 @@ class LibArticle
     static function readArtPub($idUtilisateur)
     {
         // Prépare la requête
-        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure, ART.pubblication';
+        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure, ART.pubblication, ART.idCategorie';
         $query .= ' FROM article ART';
         $query .= ' WHERE ART.pubblication = 1 or ART.idUtilisateur = :idUtilisateur';
         $query .= ' ORDER BY ART.titre ASC';

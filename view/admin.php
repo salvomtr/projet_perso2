@@ -1,7 +1,5 @@
 <?php include '../view/partial/header.php' ?>
 
-
-
 <main>
     <h1>
         <?= $pageTitle ?>
@@ -17,7 +15,7 @@
         <?php foreach ($rows as $row) { ?>
             <tr>
                 <td>
-                <?= $row['nom'] ?>
+                    <?= $row['nom'] ?>
                 </td>
 
                 <td>

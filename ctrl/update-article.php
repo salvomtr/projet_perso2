@@ -19,7 +19,7 @@ $idArticle = $_POST['id'];
 
 
 // Appel de la fonction create() pour creer des articles
-$articles = LibArticle::update($idArticle, $title, $description, $text, $picture, $idCategorie, $difficulte);
+$articles = LibArticle::update($idArticle, $title, $description, $text, $picture, $difficulte, $idCategorie);
 
 
 header('Location: /ctrl/article.php');

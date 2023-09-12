@@ -29,7 +29,7 @@ if ($isRegistred) {
     $_SESSION['nom'] = $utilisateur['nom'];
     $_SESSION['motDePasse'] = $utilisateur['motDePasse'];
     $_SESSION['utilisateur'] = $utilisateur;
-   
+
 
 
     header('Location: /');

@@ -21,15 +21,15 @@ $idRole = 2;
 //creer un utilisateur que avec ces attribue
 $retour = LibUser::create($nom, $prenom, $mail, $motDePasse, $idRole);
 if ($retour) {
-// appel fucntion login
-$utilisateur = LibUser::login($mail, $motDePasse);
-if ($utilisateur !== null) {
-        $_SESSION['nom'] = $utilisateur['nom'];
-        $_SESSION['motDePasse'] = $utilisateur['motDePasse'];
-        $_SESSION['utilisateur'] = $utilisateur;
-        header('Location: /');
-        exit;
-}
+        // appel fucntion login
+        $utilisateur = LibUser::login($mail, $motDePasse);
+        if ($utilisateur !== null) {
+                $_SESSION['nom'] = $utilisateur['nom'];
+                $_SESSION['motDePasse'] = $utilisateur['motDePasse'];
+                $_SESSION['utilisateur'] = $utilisateur;
+                header('Location: /');
+                exit;
+        }
 
-header('Location: /ctrl/inscription-display.php');
+        header('Location: /ctrl/inscription-display.php');
 }
