@@ -78,15 +78,21 @@ class LibArticle
 
     // fucntion pour lire que les article publie'
 
-    static function readArtPub($idUtilisateur)
+    static function readArtPub($idUtilisateur, $idCategorie=-1)
     {
         // Prépare la requête
         $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure, ART.pubblication, ART.idCategorie';
         $query .= ' FROM article ART';
-        $query .= ' WHERE ART.pubblication = 1 or ART.idUtilisateur = :idUtilisateur';
+        $query .= ' WHERE (ART.pubblication = 1 or ART.idUtilisateur = :idUtilisateur)';
+        if($idCategorie >= 0) {
+            $query .= " AND ART.idCategorie = :idCategorie";
+        }
         $query .= ' ORDER BY ART.titre ASC';
         $stmt = LibDb::getPDO()->prepare($query);
         $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+        if ($idCategorie >=0) {
+            $stmt->bindParam(':idCategorie', $idCategorie);
+        }
         // Exécute la requête
         $successOrFailure = $stmt->execute();
         //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);

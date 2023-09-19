@@ -82,12 +82,9 @@
 
 <p> categories </p>
 <div>
-  <a href="/ctrl/article-single.php?id=<?= $article['id'] ?>">
-    <a class="button_categorie" href="/ctrl/article-single.php?id=<?= $article['id'] ?>"> vegetarien</a>
-    <a class="button_categorie" href="/ctrl/accueil.php"> viande</a>
-    <a class="button_categorie" href="/ctrl/accueil.php"> sauce</a>
-    <a class="button_categorie" href="/ctrl/accueil.php"> ethnique</a>
+  <?php foreach($categories as $categorie):?>
+    <a href="/ctrl/article.php?idCategorie=<?= $categorie['id'] ?>"><?= $categorie['nomCategorie'] ?></a>
+  <?php endforeach ?>
 </div>
-
 
 <?php include '../view/partial/footer.php' ?>

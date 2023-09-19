@@ -14,6 +14,7 @@ $article = LibArticle::read($id);
 //list le commentaire de l article
 $listCommentaires = LibArticle::readCommentaires($id);
 $articles = LibArticle::readArtPub($idUtilisateur);
+$categories = LibArticle::listCategorie();
 ?>
 
 
