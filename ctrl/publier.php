@@ -13,4 +13,4 @@ $id = $_GET['id'];
 $succes = LibArticle::publier($id);
 
 ?>
-<?php include '../view/article.php' ?>
+<?php include '../ctrl/article.php' ?>
