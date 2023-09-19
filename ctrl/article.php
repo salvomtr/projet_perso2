@@ -17,3 +17,4 @@ $articles = LibArticle::readArtPub($idUtilisateur);
 
 ?>
 <?php include '../view/article.php' ?>
+

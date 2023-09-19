@@ -5,7 +5,8 @@
         <?= $pageTitle ?>
     </h1>
 
-    <form id="form-inscription" method="post" action="/ctrl/inscription.php">
+    <form id="form-inscription" class="form-inscription d-flex jc-center column mw-600 m-auto" method="post"
+        action="/ctrl/inscription.php">
 
         <div>
             <label for="prenom">Prenom</label>

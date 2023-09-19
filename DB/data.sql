@@ -13,6 +13,8 @@ INSERT INTO `role` (`id`, `nomRole`) VALUES (NULL, 'gestionnaire'), (NULL, 'util
 
 INSERT INTO `categorie` (`id`, `nomCategorie`) VALUES (NULL, 'vegetarien'), 
 (NULL, 'viande'), (NULL, 'sauce'), (NULL, 'ethnique');
+ INSERT INTO `categorie` (`id`, `nomCategorie`) VALUES (NULL, 'featured');
+ 
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `mail`, `motDePasse`, `idRole`) VALUES 
 (NULL, 'Matraxia', 'Salvatore', 'salvomtr@outlook.com', '123456', '1'), 
@@ -50,5 +52,7 @@ SELECT ART.id AS idArticle, ART.titre, ART.descriptionCourte, ART.dateHeure, ART
  UPDATE article SET pubblication = NOT pubblication WHERE id=26;
 
 
+
+SELECT * FROM article WHERE idCategorie = 5;
 
 

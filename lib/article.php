@@ -261,4 +261,21 @@ class LibArticle
     }
 
 
+    static function featuredArt()
+    {
+        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure';
+        $query .= ' FROM article ART';
+        $query .= ' WHERE idCategorie ';
+        $query .= ' ORDER BY ART.titre ASC';
+        $stmt = LibDb::getPDO()->prepare($query);
+        // logMsg($stmt->debugDumpParams());
+
+        // Exécute la requête
+        $successOrFailure = $stmt->execute();
+        //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }

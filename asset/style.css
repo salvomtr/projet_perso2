@@ -80,6 +80,12 @@ button{
     gap: 16px;
 }
 
+
+.form-inscription {
+    padding-bottom: 50px;
+    gap: 16px;
+}
+
 .column{
     flex-direction: column;
 }
@@ -279,4 +285,28 @@ button{
   @keyframes fade {
     from {opacity: .4}
     to {opacity: 1}
+  }
+
+  .relative{ position: relative;}
+  .slide__text{
+    position:absolute;
+    top: 32px; left: 32px; right: 32px; bottom: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+   
+
+  }
+
+  .slide__text div{
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    padding: 32px;
+    width: 100%;
+    text-align: end;
+  }
+
+  .slide__text a{
+    color: white;
   }

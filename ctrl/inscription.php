@@ -4,12 +4,8 @@ require('../lib/user.php');
 
 session_start();
 
-// Teste si l'Utilisateur est enregistré, de façon très simple,
-// parmi des utilisateurs écrits 'en dur'
+// Teste si l'Utilisateur est enregistré
 $isRegistred = false;
-//$listRegistredUser = ['john', 'sarah'];
-//$candidateUser = $_POST['username'];
-//$keyForCandidateUser = array_search($candidateUser, $listRegistredUser);
 
 //lit les infos saisie dans le formulaire avec $_POST
 $nom = $_POST['nom'];
