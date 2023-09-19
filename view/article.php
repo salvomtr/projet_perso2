@@ -34,12 +34,11 @@
                         <?php
                         // Divise la chaîne de texte $article['textArticle'] en un tableau de lignes
                         //  en utilisant des caractères de retour à la ligne comme délimiteurs.
-                        // $linesText = explode('\r', $article['textArticle']);
-                        $linesText = preg_split("/(\r\n|\n|\r)/", $article['textArticle']);
+                        $linesText = explode(PHP_EOL, $article['textArticle']);
                         $linenb = 0;
                         foreach ($linesText as $line) {
                             $linenb++;
-                            if ($linenb > 6) {
+                            if ($linenb > 6 ) {
                                 break;
                             }
                             ?>

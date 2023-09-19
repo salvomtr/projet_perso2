@@ -42,19 +42,13 @@ CREATE TABLE utilisateur (
 CREATE TABLE role (
     id bigint(25) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nomRole varchar(50) NOT NULL
-   
 );
-
-
 
 -- CREATION TABLE CATEGORIE
 CREATE TABLE categorie (
     id bigint(25) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nomCategorie varchar(50) NOT NULL
-   
+    nomCategorie varchar(50) NOT NULL   
 );
-
-
 
 ALTER TABLE article ADD CONSTRAINT `fk_article_utilisateur` FOREIGN KEY (idUtilisateur) REFERENCES utilisateur(id);
 ALTER TABLE article ADD CONSTRAINT `fk_article_categorie` FOREIGN KEY (idCategorie) REFERENCES categorie(id);
