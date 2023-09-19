@@ -34,9 +34,6 @@ class LibArticle
         return $successOrFailure;
     }
 
-
-
-
     // selection l article dont l id est passe'
     static function read($id)
     {
@@ -55,9 +52,6 @@ class LibArticle
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
-
-
-
 
     static function readAll()
     {
@@ -81,7 +75,8 @@ class LibArticle
     static function readArtPub($idUtilisateur, $idCategorie=-1)
     {
         // Prépare la requête
-        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte, ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure, ART.pubblication, ART.idCategorie';
+        $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte,';
+        $query .= ' ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure, ART.pubblication, ART.idCategorie';
         $query .= ' FROM article ART';
         $query .= ' WHERE (ART.pubblication = 1 or ART.idUtilisateur = :idUtilisateur)';
         if($idCategorie >= 0) {
@@ -101,8 +96,6 @@ class LibArticle
         return $result;
     }
 
-
-
     static function listCategorie()
     {
         // Prépare la requête
@@ -120,11 +113,8 @@ class LibArticle
         return $result;
     }
 
-
-
     static function update($id, $title, $description, $textArticle, $immage, $difficulte, $idCategorie)
     {
-
 
         $pdo = LibDb::getPDO();
         $query = "UPDATE article SET titre = :titre, textArticle = :textArticle , immage = :immage, descriptionCourte = :descriptionCourte,";
@@ -141,9 +131,7 @@ class LibArticle
 
         $success = $stmt->execute();
         return $success;
-
     }
-
 
     static function delete($id)
     {
@@ -163,7 +151,6 @@ class LibArticle
 
         return $successOrFailure;
     }
-
 
     //lib dediee aux commentaires
 
@@ -205,7 +192,6 @@ class LibArticle
         return $result;
     }
 
-
     static function deleteCommentaires($id)
     {
         $query = 'DELETE FROM commentaire';
@@ -221,8 +207,6 @@ class LibArticle
 
         return $successOrFailure;
     }
-
-
 
     static function listArtComm()
     {
@@ -249,23 +233,17 @@ class LibArticle
         return $result;
     }
 
-
-
     static function publier($id)
     {
-
-
         $pdo = LibDb::getPDO();
         $query = "UPDATE article SET pubblication = NOT pubblication";
         $query .= " WHERE id = :id";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':id', $id);
-        
+
         $success = $stmt->execute();
         return $success;
-
     }
-
 
     static function featuredArt()
     {
