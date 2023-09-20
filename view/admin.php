@@ -19,7 +19,9 @@
                 </td>
 
                 <td>
-                    <a href="../ctrl/article-single.php?id=<?= $row['idArticle'] ?>"><?= $row['titre'] ?></a>
+                    <a href="../ctrl/article-single.php?id=<?= $row['idArticle'] ?>">
+                        <?= $row['titre'] ?>
+                    </a>
                 </td>
 
                 <td>

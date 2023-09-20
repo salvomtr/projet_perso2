@@ -71,30 +71,40 @@ class LibArticle
     }
 
     // fucntion pour lire que les article publie'
-
-    static function readArtPub($idUtilisateur, $idCategorie=-1)
+    static function readArtPub($idUtilisateur, $idCategorie = -1)
     {
-        // Prépare la requête
+        // Prépare la requête SQL pour requperer les articles publics
         $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte,';
         $query .= ' ART.textArticle, ART.immage, ART.difficulte, ART.dateHeure, ART.pubblication, ART.idCategorie';
         $query .= ' FROM article ART';
         $query .= ' WHERE (ART.pubblication = 1 or ART.idUtilisateur = :idUtilisateur)';
-        if($idCategorie >= 0) {
+        // Si une catégorie spécifique est spécifiée, ajoute une condition à la requête
+        if ($idCategorie >= 0) {
             $query .= " AND ART.idCategorie = :idCategorie";
         }
+        // Trie les resultats par ordre alphabeetique du titre
         $query .= ' ORDER BY ART.titre ASC';
+        // Prépare la requete SQL avec PDO
         $stmt = LibDb::getPDO()->prepare($query);
+
+        // Lie le parametre :idUtilisateur à la valeur $idUtilisateur
         $stmt->bindParam(':idUtilisateur', $idUtilisateur);
-        if ($idCategorie >=0) {
+
+        // Si une catégorie spécifique est spécifiée, lie le paramètre :idCategorie à la valeur $idCategorie
+        if ($idCategorie >= 0) {
             $stmt->bindParam(':idCategorie', $idCategorie);
         }
-        // Exécute la requête
-        $successOrFailure = $stmt->execute();
-        //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
 
+        // Exécute la requête SQL
+        $successOrFailure = $stmt->execute();
+
+        // Récupère tous les résultats sou form de tableau associatif
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Retourne le tableau de résultats
         return $result;
     }
+
 
     static function listCategorie()
     {
@@ -223,8 +233,6 @@ class LibArticle
         $query .= ' INNER JOIN utilisateur AS U ON ART.idUtilisateur = U.id';
         $query .= ' WHERE ART.dateHeure > date_sub(curdate(), interval 30 day)';
         $stmt = LibDb::getPDO()->prepare($query);
-
-
         // Exécute la requête
         $successOrFailure = $stmt->execute();
         //  logMsg("Success (1) or Failure (0) ? $successOrFailure" . PHP_EOL);
