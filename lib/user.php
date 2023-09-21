@@ -24,7 +24,6 @@ class LibUser
         $query .= ' (:nom, :prenom, :mail, :motDePasse, :idRole)';
 
         $stmt = LibDb::getPDO()->prepare($query);
-        // $stmt->bindParam(':id', $idUser);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':mail', $mail);
@@ -67,7 +66,7 @@ class LibUser
         // $query .= ' AND U.motDePasse = :motDePasse';
         $stmt = LibDb::getPDO()->prepare($query);
         $stmt->bindParam(':mail', $mail);
-        // $stmt->bindParam(':motDePasse', $motDePasse);
+        // $stmt->bindParam(':motDePasse', $motDePasse);  
         logMsg($stmt->debugDumpParams());
 
         // Exécute la requête

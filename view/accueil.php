@@ -1,8 +1,6 @@
 <?php include '../view/partial/header.php' ?>
 
-<h1>
-  <?= $pageTitle ?>
-</h1>
+
 
 
 <!-- Slideshow container -->
@@ -45,6 +43,25 @@
   <span class="dot" onclick="currentSlide(4)"></span>
   <span class="dot" onclick="currentSlide(5)"></span>
 </div>
+<h1>
+  <?= $pageTitle ?>
+</h1>
+<div class="coming-soon">
+  <h2>Coming Soon</h2>
+</div>
+
+
+<div class="categorie">
+<h2> categories </h2>
+<div>
+  <?php foreach ($categories as $categorie): ?>
+    <a href="/ctrl/article.php?idCategorie=<?= $categorie['id'] ?>">
+      <?= $categorie['nomCategorie'] ?>
+    </a>
+  <?php endforeach ?>
+</div>
+</div>
+
 
 <script>
   console.log("script slider loaded");
@@ -78,13 +95,5 @@
   }
 
 </script>
-
-
-<p> categories </p>
-<div>
-  <?php foreach($categories as $categorie):?>
-    <a href="/ctrl/article.php?idCategorie=<?= $categorie['id'] ?>"><?= $categorie['nomCategorie'] ?></a>
-  <?php endforeach ?>
-</div>
 
 <?php include '../view/partial/footer.php' ?>

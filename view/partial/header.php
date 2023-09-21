@@ -26,9 +26,18 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
 
 <body>
 
-    <header class="p-1 d-flex align-center">
+    <header class="p-1 d-flex wrap g-1 align-center">
+        <a href="/">
+            <img src="../asset/logo.png" alt="logo" width="150">
+        </a>
+        <form action="">
+        <input type="search">
+        <button>
+            search
+        </button>
+        </form>
         <nav>
-            <ul class="menu_element">
+            <div class="menu_element">
 
                 <?php if ($isRegistered) { ?> Hello "
                     <?= $_SESSION['nom'] ?>"
@@ -59,6 +68,6 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                     <a class="button_menu" href="/ctrl/inscription-display.php">Inscription</a>
                 <?php } ?>
 
-            </ul>
+            </div>
         </nav>
     </header>

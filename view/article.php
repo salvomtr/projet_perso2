@@ -38,7 +38,7 @@
                         $linenb = 0;
                         foreach ($linesText as $line) {
                             $linenb++;
-                            if ($linenb > 6 ) {
+                            if ($linenb > 6) {
                                 break;
                             }
                             ?>

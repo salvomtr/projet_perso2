@@ -7,12 +7,11 @@ session_start();
 // Teste si l'Utilisateur est enregistré
 $isRegistred = false;
 
-//lit les infos saisie dans le formulaire avec $_POST
-$mail = $_POST['mail'];
-$motDePasse = $_POST['password'];
+// Lit les infos saisie dans le formulaire avec $_POST
+$mail = trim(htmlspecialchars($_POST['mail']));
+$motDePasse = trim(htmlspecialchars($_POST['password']));
 
-
-//cherche un utilisateur que possede cette mail et ce password
+// Cherche un utilisateur que possede cette mail et ce password
 $utilisateur = LibUser::login($mail, $motDePasse);
 if ($utilisateur !== null) {
     $isRegistred = true;
@@ -25,8 +24,6 @@ if ($isRegistred) {
     $_SESSION['nom'] = $utilisateur['nom'];
     $_SESSION['motDePasse'] = $utilisateur['motDePasse'];
     $_SESSION['utilisateur'] = $utilisateur;
-
-
 
     header('Location: /');
     exit;
