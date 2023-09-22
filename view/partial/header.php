@@ -30,8 +30,8 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
         <a href="/">
             <img src="../asset/logo.png" alt="logo" width="150">
         </a>
-        <form action="">
-            <input type="search">
+        <form action="/ctrl/article.php">
+            <input type="search" name="q">
             <button>
                 search
             </button>

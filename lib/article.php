@@ -71,7 +71,7 @@ class LibArticle
     }
 
     // fucntion pour lire que les article publie'
-    static function readArtPub($idUtilisateur, $idCategorie = -1)
+    static function readArtPub($idUtilisateur = -1, $idCategorie = -1, $filtre = null)
     {
         // Prépare la requête SQL pour requperer les articles publics
         $query = 'SELECT ART.id, ART.idUtilisateur, ART.titre, ART.descriptionCourte,';
@@ -81,6 +81,9 @@ class LibArticle
         // Si une catégorie spécifique est spécifiée, ajoute une condition à la requête
         if ($idCategorie >= 0) {
             $query .= " AND ART.idCategorie = :idCategorie";
+        }
+        if ($filtre !== null) {
+            $query .= " AND (LOWER(descriptionCourte) LIKE LOWER(:filtre) OR LOWER(titre) LIKE LOWER(:filtre))";
         }
         // Trie les resultats par ordre alphabeetique du titre
         $query .= ' ORDER BY ART.titre ASC';
@@ -94,7 +97,10 @@ class LibArticle
         if ($idCategorie >= 0) {
             $stmt->bindParam(':idCategorie', $idCategorie);
         }
-
+        if ($filtre !== null) {
+            $filtre = '%' . $filtre . '%'; 
+            $stmt->bindParam(':filtre', $filtre);
+        }
         // Exécute la requête SQL
         $successOrFailure = $stmt->execute();
 
