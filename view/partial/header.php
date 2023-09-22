@@ -31,12 +31,13 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
             <img src="../asset/logo.png" alt="logo" width="150">
         </a>
         <form action="">
-        <input type="search">
-        <button>
-            search
-        </button>
+            <input type="search">
+            <button>
+                search
+            </button>
         </form>
         <nav>
+
             <div class="menu_element">
 
                 <?php if ($isRegistered) { ?> Hello "
@@ -58,7 +59,6 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                     <a class="button_menu" href="/ctrl/admin-display.php">Admin</a>
                 <?php } ?>
 
-
                 <?php if ($isRegistered) { ?>
 
                     <a href="/ctrl/logout.php">Logout</a>
@@ -67,7 +67,21 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                     <a class="button_menu" href="/ctrl/login-display.php">Login</a>
                     <a class="button_menu" href="/ctrl/inscription-display.php">Inscription</a>
                 <?php } ?>
-
             </div>
         </nav>
     </header>
+
+    <script>
+        const burger = document.querySelector("#burger-menu");
+        const sideBar = document.querySelector(".side-bar");
+
+        burger.addEventListener("click", faireQC);
+
+        function faireQC(e) {
+            console.log(e.currentTarget.children[0]);
+            if (e.currentTarget.children[0].classList != "bi bi-x-lg")
+                e.currentTarget.children[0].classList = "bi bi-x-lg";
+            else e.currentTarget.children[0].classList = "bi bi-list";
+            sideBar.classList.toggle("open");
+        }
+    </script>

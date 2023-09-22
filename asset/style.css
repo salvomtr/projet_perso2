@@ -168,14 +168,12 @@ button:hover{
 }
 
 .art {
-   
     /* Provisoire */
     box-sizing:content-box;
     border: 1px solid rgb(01, 01, 01, 0.1) ;
     justify-content: space-around;
     border-radius: 10px;
     box-shadow: 3px 3px 15px  rgb(01, 01, 02, 0.4);
-   
 }
 
 .art__header {
@@ -358,4 +356,32 @@ button:hover{
   .slide__text a{
     color: white;
   }
+  .menu {
+    display: block;
+    margin-left: auto;
+    position: fixed;
+    top: 26px;
+    right: 16px;
+  }
+  
+  #burger-menu {
+   background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+  }
+  .side-bar {
+    display: none;
+  }
 
+  .open {
+    display: flex;
+  }
+  
+  @media (min-width: 640px) {
+    .menu {
+      display: none;
+    }
+    .side-bar {
+      display: flex;
+    }
+  }

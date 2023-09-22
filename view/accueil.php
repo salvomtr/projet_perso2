@@ -12,7 +12,7 @@
 
     <article class="mySlides fade relative">
       <picture>
-        <img src="https://source.unsplash.com/1600x900?meal,<?= $article['titre'] ?>" alt="Lorem" style="width:100%">
+        <img src="https://source.unsplash.com/1600x630?meal,<?= $article['titre'] ?>" alt="Lorem" style="width:100%">
         <!-- <img src="https://source.unsplash.com/1600x900?meal&,1" style="width:100%"> -->
       </picture>
       <div class="slide__text">
