@@ -9,11 +9,10 @@ use Monolog\Handler\StreamHandler;
 class Log
 {
     /** Fournit un accès au fichier de log. */
-    public static function getLog($name) : Logger {
-
+    public static function getLog($name): Logger
+    {
         $log = new Logger($name);
-        $log->pushHandler(new StreamHandler($_SERVER['DOCUMENT_ROOT'].'/log/app.log', Logger::DEBUG));
-
+        $log->pushHandler(new StreamHandler($_SERVER['DOCUMENT_ROOT'] . '/log/app.log', Logger::DEBUG));
         return $log;
     }
 

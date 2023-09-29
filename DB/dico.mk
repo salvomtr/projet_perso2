@@ -17,7 +17,6 @@ ENTITE:
 
 RELATIONS:
 
-
     Un ARTICLE est ecrit par un minimum 1 UTILISATEUR et au maximum 1 UTILISATEUR
     un UTILISATEUR peut ecrere au minimum 0 ARTICLE et au maximum N ARTICLEs
 

@@ -2,18 +2,16 @@
 
 session_start();
 
-
 $isRegistered = false;
 if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur'])) {
     $isRegistered = true;
     $idRole = $_SESSION['utilisateur']['idRole'];
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +23,6 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
 </head>
 
 <body>
-
     <header class="p-1 d-flex wrap g-1 align-center">
         <a href="/">
             <img src="../asset/logo.png" alt="logo" width="150">
@@ -36,8 +33,8 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                 search
             </button>
         </form>
-        <nav>
 
+        <nav>
             <div class="menu_element">
 
                 <?php if ($isRegistered) { ?> Hello "

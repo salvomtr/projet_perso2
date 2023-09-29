@@ -14,25 +14,20 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
     <h1>
         <?= $pageTitle ?>
     </h1>
-
     <div class="container d-flex wrap jc-center mw-1200 m-auto">
         <div class="mw-350 f-1-300">
             <article class="art p-1 sticky">
-
                 <header class="art__header">
                     <picture>
                         <img src="https://source.unsplash.com/1600x900?meal&<?= $article['titre'] ?>" alt="Lorem"
                             width="600">
                     </picture>
-
                     <h2>
                         <?= $article['titre'] ?>
                     </h2>
-
                     <p>
                         <?= $article['descriptionCourte'] ?>
                     </p>
-
                     <p>
                         <small>Difficulté :
                             <?php for ($i = 1; $i <= $article['difficulte']; $i++) { ?>
@@ -41,9 +36,7 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                         </small>
                     </p>
                 </header>
-
                 <div class="art__summary">
-
                     <p>
                         <?php
                         // Divise la chaîne de texte $article['textArticle'] en un tableau de lignes
@@ -54,16 +47,13 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                             <?= $line ?><br>
                         <?php } ?>
                     </p>
-
                 </div>
             </article>
         </div>
-
         <div class="admin__buttons">
             <!--Se on est le gestionnaire ou l auteur de l article redirige', 
             on as le droit de supprimer ou modifier l article  -->
             <?php if ($idRole == 1 || $utilisateur['id'] == $article['idUtilisateur']) { ?>
-
                 <div>
                     <a href="../ctrl/deletArticle.php?id=<?= $article['id'] ?>">delete article</a>
                 </div>
@@ -72,10 +62,7 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                     <a href="../ctrl/update-article-display.php?id=<?= $article['id'] ?>">modif article</a>
                 </div>
             <?php } ?>
-
-
             <?php if ($idRole == 1) { ?>
-
                 <?php if ($article['pubblication'] == 1) { ?>
                     <div>
                         <a href="../ctrl/publier.php?id=<?= $article['id'] ?>">depublier</a>
@@ -85,10 +72,8 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                         <a href="../ctrl/publier.php?id=<?= $article['id'] ?>">publier</a>
                     </div>
                 <?php } ?>
-
             <?php } ?>
         </div>
-
         <div class="com__system d-flex">
             <div>
                 <form id="form-commentaire" method="post" action="/ctrl/commentaire.php">
@@ -100,7 +85,6 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                     <button type="submit">creer</button>
                 </form>
             </div>
-
             <div>
                 <?php foreach ($listCommentaires as $commentaire) { ?>
 
@@ -111,11 +95,9 @@ if (array_key_exists('utilisateur', $_SESSION) && isset($_SESSION['utilisateur']
                             </p>
                         </div>
                     </article>
-
                 <?php } ?>
             </div>
         </div>
-
     </div>
 </main>
 

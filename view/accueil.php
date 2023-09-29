@@ -1,8 +1,5 @@
 <?php include '../view/partial/header.php' ?>
 
-
-
-
 <!-- Slideshow container -->
 <div class="slideshow-container">
 
@@ -26,9 +23,6 @@
     </article>
   <?php } ?>
 
-
-
-
   <!-- Next and previous buttons -->
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -46,10 +40,6 @@
 <h1>
   <?= $pageTitle ?>
 </h1>
-<div class="coming-soon">
-  <h2>Coming Soon</h2>
-</div>
-
 
 <div class="categorie">
 <h2> categories </h2>

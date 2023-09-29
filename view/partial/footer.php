@@ -7,7 +7,7 @@ if (array_key_exists('msg_info', $_SESSION)) {
 ?>
 
 
-<footer class="p-1 footer__main">Footer</footer>
+<footer class="p-1 footer__main"></footer>
 
 </body>
 
